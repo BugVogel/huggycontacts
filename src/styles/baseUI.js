@@ -2,9 +2,16 @@ import styled from 'styled-components/native';
 import {withTheme} from 'styled-components';
 
 export const BaseButton = withTheme(styled.TouchableOpacity`
-  background-color: ${props => props.theme.colors.primary}
+  background-color: ${props =>
+    props?.color
+      ? props.theme.colors[props.color]
+        ? props.theme.colors[props.color]
+        : props.color
+      : props.theme.colors.primary};
   border-radius: 8px;
-  flex: 1;
+  padding: 9px;
+  padding-right: 12px;
+  padding-left: 12px;
 `);
 
 export const BaseText = withTheme(styled.Text`

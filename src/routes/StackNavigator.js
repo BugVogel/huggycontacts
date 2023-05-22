@@ -6,7 +6,11 @@ const Stack = createStackNavigator();
 const StackNavigator = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={Login} />
+      <Stack.Screen
+        name="Home"
+        component={Login}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
   );
 };

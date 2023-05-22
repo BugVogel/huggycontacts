@@ -1,6 +1,6 @@
 export default {
   colors: {
-    primary: '#262626',
+    primary: '#321BDE',
   },
   font: {
     family: 'iconmoon',

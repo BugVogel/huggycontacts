@@ -1,0 +1,19 @@
+import React from 'react';
+import {View, Text} from 'react-native';
+
+import {LoginContentContainer, TitleView} from './styles';
+import {BaseText, BaseButton} from '../../styles/baseUI';
+
+const LoginContent = props => {
+  return (
+    <LoginContentContainer>
+      <TitleView>
+        <BaseText fontSize={24}>Login</BaseText>
+      </TitleView>
+      <BaseButton>
+        <BaseText color={'#FFF'}>Fazer login com a Huggy</BaseText>
+      </BaseButton>
+    </LoginContentContainer>
+  );
+};
+export default LoginContent;
