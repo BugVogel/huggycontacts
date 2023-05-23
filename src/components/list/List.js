@@ -4,7 +4,7 @@ import ListItem from './ListItem';
 import EmptyList from '../emptylist/EmptyList';
 import {ListContainer} from './styles';
 
-const List = ({listJSON, firstIndexs, setIsGoingUp = () => {}}) => {
+const List = ({listJSON, firstIndexs, setIsGoingUp = () => {}, navigation}) => {
   const [currentOffset, setCurrentOffset] = useState(0);
   return (
     <ListContainer>
@@ -26,6 +26,9 @@ const List = ({listJSON, firstIndexs, setIsGoingUp = () => {}}) => {
 
           return (
             <ListItem
+              onPressFunction={() =>
+                navigation.navigate('SeeContact', {...item})
+              }
               content={item.name}
               acronym={acronym}
               isFirst={firstIndexs.includes(index)}

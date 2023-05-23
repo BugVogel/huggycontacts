@@ -19,6 +19,7 @@ const Contacts = props => {
         listJSON={listJSONOrdely}
         firstIndexs={firstIndex}
         setIsGoingUp={isGoingUp => setShowAbsoluteButtonText(isGoingUp)}
+        navigation={props.navigation}
       />
       <AbsoluteButton
         iconName={''}

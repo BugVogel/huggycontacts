@@ -24,6 +24,13 @@ const HeaderButtons = props => {
           </IconView>
         </>
       )}
+      {props.seecontact && (
+        <IconView>
+          <TouchableOpacity>
+            <Icon name="" size={25} color={theme.colors.iconPrimary} />
+          </TouchableOpacity>
+        </IconView>
+      )}
     </HeaderButtonContainer>
   );
 };

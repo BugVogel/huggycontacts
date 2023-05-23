@@ -27,7 +27,7 @@ const AbsoluteButton = ({label, iconName, showText = true}) => {
     if (showText) {
       decreaseLabel();
       setTimeout(() => {
-        console.log(labelLengthValue);
+        // console.log(labelLengthValue);
       }, 1000);
     } else {
       growLabel();
