@@ -11,7 +11,7 @@ export default {
       state: 'Bahia',
     },
     {
-      name: 'Matheus da Oliveira',
+      name: 'Heloise Marli Freitas',
       email: 'teste@gmail.com',
       phone: '(75)3261-5568',
       celphone: '(75)99189-5568',
@@ -21,7 +21,7 @@ export default {
       state: 'Bahia',
     },
     {
-      name: 'Matheus da Oliveira',
+      name: 'Cristiane Carolina Nunes',
       email: 'teste@gmail.com',
       phone: '(75)3261-5568',
       celphone: '(75)99189-5568',
@@ -31,7 +31,7 @@ export default {
       state: 'Bahia',
     },
     {
-      name: 'Matheus da Oliveira',
+      name: 'Carlos Eduardo Tomás Ribeiro',
       email: 'teste@gmail.com',
       phone: '(75)3261-5568',
       celphone: '(75)99189-5568',
@@ -41,7 +41,7 @@ export default {
       state: 'Bahia',
     },
     {
-      name: 'Matheus da Oliveira',
+      name: 'Carol de Almeida Oliveira',
       email: 'teste@gmail.com',
       phone: '(75)3261-5568',
       celphone: '(75)99189-5568',
@@ -51,7 +51,7 @@ export default {
       state: 'Bahia',
     },
     {
-      name: 'Matheus da Oliveira',
+      name: 'Elza Teresinha Martins',
       email: 'teste@gmail.com',
       phone: '(75)3261-5568',
       celphone: '(75)99189-5568',
@@ -61,7 +61,7 @@ export default {
       state: 'Bahia',
     },
     {
-      name: 'Matheus da Oliveira',
+      name: 'Giovanni Caleb Duarte',
       email: 'teste@gmail.com',
       phone: '(75)3261-5568',
       celphone: '(75)99189-5568',
@@ -71,7 +71,7 @@ export default {
       state: 'Bahia',
     },
     {
-      name: 'Matheus da Oliveira',
+      name: 'Pietra Patrícia Simone Martins',
       email: 'teste@gmail.com',
       phone: '(75)3261-5568',
       celphone: '(75)99189-5568',
@@ -81,7 +81,7 @@ export default {
       state: 'Bahia',
     },
     {
-      name: 'Matheus da Oliveira',
+      name: 'Renata Amanda Aline Araújo',
       email: 'teste@gmail.com',
       phone: '(75)3261-5568',
       celphone: '(75)99189-5568',

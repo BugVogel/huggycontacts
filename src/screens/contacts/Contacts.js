@@ -4,15 +4,16 @@ import EmptyList from '../../components/emptylist/EmptyList';
 import {ContactsContainer} from './styles';
 import List from '../../components/list/List';
 import mockDatas from '../../mock/mockDatas';
-import {getFirstIndexs} from './utils';
+import {getFirstIndexs, orderListJSON} from './utils';
 
 const Contacts = props => {
   const listJSON = mockDatas.contactList;
-  const firstIndex = getFirstIndexs(listJSON);
-  console.log(firstIndex);
+  const listJSONOrdely = orderListJSON(listJSON);
+  const firstIndex = getFirstIndexs(listJSONOrdely);
+  // console.log(listJSONOrdely);
   return (
     <ContactsContainer>
-      <List listJSON={listJSON} firstIndexs={firstIndex} />
+      <List listJSON={listJSONOrdely} firstIndexs={firstIndex} />
     </ContactsContainer>
   );
 };
