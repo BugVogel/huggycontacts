@@ -19,10 +19,10 @@ const List = ({listJSON, firstIndexs, setIsGoingUp = () => {}, navigation}) => {
         }}
         data={listJSON}
         renderItem={({item, index}) => {
-          const nameArray = item.name.split(' ');
-          const acronym =
-            nameArray[0][0].toUpperCase() +
-            nameArray[nameArray.length - 1][0].toUpperCase();
+          // const nameArray = item.name.split(' ');
+          // const acronym =
+          //   nameArray[0][0].toUpperCase() +
+          //   nameArray[nameArray.length - 1][0].toUpperCase();
 
           return (
             <ListItem
@@ -30,7 +30,6 @@ const List = ({listJSON, firstIndexs, setIsGoingUp = () => {}, navigation}) => {
                 navigation.navigate('SeeContact', {...item})
               }
               content={item.name}
-              acronym={acronym}
               isFirst={firstIndexs.includes(index)}
             />
           );

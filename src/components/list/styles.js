@@ -14,7 +14,7 @@ export const ListItemContainer = styled.View`
 
 export const TextView = styled.View`
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: row;
   flex: 1;
 `;

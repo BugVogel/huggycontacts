@@ -23,4 +23,5 @@ export const BaseText = withTheme(styled.Text`
   flex-wrap: wrap;
   font-size: ${props => (props?.fontSize ? props.fontSize : 16)}px;
   font-weight: ${props => (props?.fontWeight ? props.fontWeight : 400)};
+  ${props => (props?.center ? 'text-align:center;' : '')}
 `);

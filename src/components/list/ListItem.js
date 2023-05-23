@@ -10,21 +10,15 @@ import {
 import {BaseText} from '../../styles/baseUI';
 import Avatar from '../avatar/Avatar';
 
-const ListItem = ({
-  content,
-  avatar,
-  acronym,
-  isFirst = false,
-  onPressFunction,
-}) => {
+const ListItem = ({content, avatar, isFirst = false, onPressFunction}) => {
   return (
     <ListItemContainer>
       <FirstletterView>
-        {isFirst && <BaseText fontWeight={500}>{acronym[0]}</BaseText>}
+        {isFirst && <BaseText fontWeight={500}>{content.trim()[0]}</BaseText>}
       </FirstletterView>
       <ContentView overlayColor={'red'} onPress={onPressFunction}>
         <AvatarView>
-          <Avatar acronym={acronym} />
+          <Avatar name={content} />
         </AvatarView>
         <TextView>
           <BaseText>{content}</BaseText>
