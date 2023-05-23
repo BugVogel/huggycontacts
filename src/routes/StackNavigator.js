@@ -1,16 +1,20 @@
+import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import Login from '../screens/Login';
+
+import Login from '../screens/login/Login';
+import Contacts from '../screens/contacts/Contacts';
 
 const Stack = createStackNavigator();
 
 const StackNavigator = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="Home">
       <Stack.Screen
         name="Home"
         component={Login}
         options={{headerShown: false}}
       />
+      <Stack.Screen name="Contacts" component={Contacts} />
     </Stack.Navigator>
   );
 };
