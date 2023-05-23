@@ -31,13 +31,13 @@ export const TextView = styled.View`
 `;
 
 export const FirstletterView = styled.View`
-  margin-right: 42px;
-  align-items: center;
+  flex: 2;
+  align-items: flex-start;
   justify-content: center;
 `;
 
 export const ContentView = styled.View`
-  flex: 1;
+  flex: 8;
   border-radius: 8px;
   flex-direction: row;
   background-color: ${props => (props.selected ? '#F8F8F8' : '#FFF')};

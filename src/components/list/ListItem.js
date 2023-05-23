@@ -12,11 +12,9 @@ import {BaseText} from '../../styles/baseUI';
 const ListItem = ({content, avatar, acronym, isFirst = false}) => {
   return (
     <ListItemContainer>
-      {isFirst && (
-        <FirstletterView>
-          <BaseText fontWeight={500}>{acronym[0]}</BaseText>
-        </FirstletterView>
-      )}
+      <FirstletterView>
+        {isFirst && <BaseText fontWeight={500}>{acronym[0]}</BaseText>}
+      </FirstletterView>
       <ContentView>
         <AvatarView>
           <BaseText color={'#180D6E'}>{acronym}</BaseText>
