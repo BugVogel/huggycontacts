@@ -8,10 +8,12 @@ export const BaseButtonStyled = withTheme(styled.TouchableOpacity`
         ? props.theme.colors[props.color]
         : props.color
       : props.theme.colors.primary};
-  border-radius: 8px;
-  padding: 9px;
-  padding-right: 12px;
-  padding-left: 12px;
+  border-radius: ${props => (props?.circle ? '30px' : '8px')};
+  ${props =>
+    props?.circle
+      ? 'padding: 17px;'
+      : 'padding: 9px; padding-right: 12px; padding-left: 12px;'}
+
   flex-direction: row;
 `);
 

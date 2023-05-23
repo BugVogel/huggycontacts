@@ -11,7 +11,7 @@ const LoginContent = props => {
       <TitleView>
         <BaseText fontSize={24}>Login</BaseText>
       </TitleView>
-      <BaseButton>
+      <BaseButton leftIcon="" iconColor="#FFF">
         <BaseText color={'#FFF'}>Fazer login com a Huggy</BaseText>
       </BaseButton>
     </LoginContentContainer>

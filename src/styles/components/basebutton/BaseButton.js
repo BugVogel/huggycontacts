@@ -9,9 +9,15 @@ const BaseButton = props => {
   const theme = useTheme();
 
   return (
-    <BaseButtonStyled color={props?.color} style={props?.style}>
+    <BaseButtonStyled
+      color={props?.color}
+      style={props?.style}
+      circle={props?.circle}>
       {props?.leftIcon && (
-        <IconView>
+        <IconView
+          style={{
+            marginRight: props?.justIcon ? 0 : 8,
+          }}>
           <Icon
             size={18}
             name={props.leftIcon}
