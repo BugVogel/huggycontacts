@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import {withTheme} from 'styled-components';
 
-export const BaseButton = withTheme(styled.TouchableOpacity`
+export const BaseButtonStyled = withTheme(styled.TouchableOpacity`
   background-color: ${props =>
     props?.color
       ? props.theme.colors[props.color]
@@ -12,6 +12,7 @@ export const BaseButton = withTheme(styled.TouchableOpacity`
   padding: 9px;
   padding-right: 12px;
   padding-left: 12px;
+  flex-direction: row;
 `);
 
 export const BaseText = withTheme(styled.Text`

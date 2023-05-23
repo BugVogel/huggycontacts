@@ -2,7 +2,8 @@ import React from 'react';
 import {View, Text} from 'react-native';
 
 import {LoginContentContainer, TitleView} from './styles';
-import {BaseText, BaseButton} from '../../styles/baseUI';
+import {BaseText} from '../../styles/baseUI';
+import BaseButton from '../../styles/components/basebutton/BaseButton';
 
 const LoginContent = props => {
   return (
