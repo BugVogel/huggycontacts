@@ -20,4 +20,5 @@ export const BaseText = withTheme(styled.Text`
   font-family: iconmoon;
   flex-wrap: wrap;
   font-size: ${props => (props?.fontSize ? props.fontSize : 16)}px;
+  font-weight: ${props => (props?.fontWeight ? props.fontWeight : 400)};
 `);
