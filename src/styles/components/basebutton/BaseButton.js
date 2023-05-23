@@ -13,7 +13,7 @@ const BaseButton = props => {
       {props?.leftIcon && (
         <IconView>
           <Icon
-            size={15}
+            size={18}
             name={props.leftIcon}
             color={
               props?.iconColor
