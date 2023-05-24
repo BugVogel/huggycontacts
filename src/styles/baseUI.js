@@ -3,7 +3,6 @@ import {withTheme} from 'styled-components';
 
 export const BaseButtonStyled = withTheme(styled.TouchableOpacity.attrs(
   props => {
-    console.log(props.style);
     return {style: props.style};
   },
 )`
