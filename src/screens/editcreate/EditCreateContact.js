@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text} from 'react-native';
 import FormConstructor from '../../components/formconstructor/FormConstructor';
 import {EditCreateContactContainer} from './styles';
@@ -13,6 +13,10 @@ const EditCreateContact = props => {
   const formJSON = contact
     ? putValues(mockForms.register, contact)
     : mockForms.register;
+
+  useEffect(() => {
+    contact && props.navigation.setOptions({title: 'Editar contato'});
+  }, []);
 
   return (
     <EditCreateContactContainer>

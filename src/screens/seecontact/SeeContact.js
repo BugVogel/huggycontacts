@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text} from 'react-native';
 import {
   ContactBannerWrapper,
@@ -13,6 +13,11 @@ const SeeContact = props => {
   const [showAbsoluteButtonText, setShowAbsoluteButtonText] = useState(false);
   const [currentOffset, setCurrentOffset] = useState(0);
   const contact = props.route.params;
+
+  useEffect(() => {
+    props.navigation.setOptions({title: contact.name});
+  }, []);
+
   return (
     <>
       <SeeContactsContainer
