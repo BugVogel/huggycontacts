@@ -13,6 +13,7 @@ const EditCreateContact = props => {
   const formJSON = contact
     ? putValues(mockForms.register, contact)
     : mockForms.register;
+  console.log(formJSON);
 
   useEffect(() => {
     contact && props.navigation.setOptions({title: 'Editar contato'});
@@ -21,9 +22,6 @@ const EditCreateContact = props => {
   return (
     <EditCreateContactContainer>
       <FormConstructor formJSON={formJSON} formState={formState} />
-      {/* <BaseButton onPress={() => console.log(formStateValues)}>
-        <Text>TESTE</Text>
-      </BaseButton> */}
     </EditCreateContactContainer>
   );
 };

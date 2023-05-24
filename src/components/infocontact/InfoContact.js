@@ -14,10 +14,10 @@ const InfoContact = ({contact}) => {
     },
     {label: 'Email', content: contact.email},
     {label: 'Telefone', content: contact.phone},
-    {label: 'Celular', content: contact.celphone},
+    {label: 'Celular', content: contact.mobile},
     {label: 'Endereço'},
-    {label: 'Endereço', content: contact.addres},
-    {label: 'Bairro', content: contact.neightboardhood},
+    {label: 'Endereço', content: contact.address},
+    {label: 'Bairro', content: contact.district},
     {label: 'Cidade', content: contact.city},
     {label: 'Estado', content: contact.state},
   ];
