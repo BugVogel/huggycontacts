@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import {withTheme} from 'styled-components';
 
 export const ListContainer = styled.View`
   flex: 1;
@@ -25,12 +26,13 @@ export const FirstletterView = styled.View`
   justify-content: center;
 `;
 
-export const ContentView = styled.TouchableOpacity`
+export const ContentView = withTheme(styled.TouchableOpacity`
   flex: 8;
   border-radius: 8px;
   flex-direction: row;
-  background-color: ${props => (props.selected ? '#F8F8F8' : '#FFF')};
-`;
+  background-color: ${props =>
+    props.selected ? props.theme.colors.secondary : '#FFF'};
+`);
 
 export const AvatarView = styled.View`
   flex-direction: row;

@@ -30,3 +30,11 @@ export const BaseText = withTheme(styled.Text`
   font-weight: ${props => (props?.fontWeight ? props.fontWeight : 400)};
   ${props => (props?.center ? 'text-align:center;' : '')}
 `);
+
+export const BaseInput = withTheme(styled.TextInput`
+  background-color: ${props => props.theme.colors.secondary};
+  padding: 16px;
+  border-radius: 12px;
+  border-width: 1px;
+  border-color: #c9c9c9;
+`);
