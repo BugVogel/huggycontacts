@@ -22,7 +22,7 @@ const FormConstructor = ({formJSON, formState}) => {
             <BaseInput
               placeholder={input.placeholder}
               placeholderTextColor={'#1C1C1C'}
-              value={formState[index]}
+              value={formState.formStateValues[index]?.value}
               onChangeText={text => {
                 let newFormValues = [...formState.formStateValues];
                 newFormValues[index] = {...newFormValues[index], value: text};
