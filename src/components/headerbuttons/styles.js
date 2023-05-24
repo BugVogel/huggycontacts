@@ -14,4 +14,5 @@ export const IconView = styled.View`
 
 export const SaveButtonView = styled.View`
   margin-right: 16px;
+  margin-left: 16px;
 `;

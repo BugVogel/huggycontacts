@@ -41,6 +41,7 @@ const StackNavigator = () => {
         options={{
           title: 'Criar Contato',
           headerRight: () => <HeaderButtons edit />,
+          headerLeft: () => <HeaderButtons leftClose />,
         }}
       />
     </Stack.Navigator>
