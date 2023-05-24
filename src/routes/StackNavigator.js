@@ -12,7 +12,7 @@ const Stack = createStackNavigator();
 const StackNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Contacts"
+      initialRouteName="Login"
       screenOptions={{cardStyle: {backgroundColor: '#FFF'}}}>
       <Stack.Screen
         name="Home"
@@ -25,6 +25,7 @@ const StackNavigator = () => {
         options={{
           title: 'Contatos',
           headerRight: () => <HeaderButtons contacts />,
+          headerLeft: () => null,
         }}
       />
       <Stack.Screen

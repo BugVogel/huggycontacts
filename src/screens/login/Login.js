@@ -11,7 +11,9 @@ const LoginContent = props => {
       <TitleView>
         <BaseText fontSize={24}>Login</BaseText>
       </TitleView>
-      <BaseButton leftIcon="" iconColor="#FFF">
+      <BaseButton
+        iconColor="#FFF"
+        onPress={() => props.navigation.navigate('Contacts')}>
         <BaseText color={'#FFF'}>Fazer login com a Huggy</BaseText>
       </BaseButton>
     </LoginContentContainer>
