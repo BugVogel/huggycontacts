@@ -1,7 +1,12 @@
 import styled from 'styled-components/native';
 import {withTheme} from 'styled-components';
 
-export const BaseButtonStyled = withTheme(styled.TouchableOpacity`
+export const BaseButtonStyled = withTheme(styled.TouchableOpacity.attrs(
+  props => {
+    console.log(props.style);
+    return {style: props.style};
+  },
+)`
   background-color: ${props =>
     props?.color
       ? props.theme.colors[props.color]

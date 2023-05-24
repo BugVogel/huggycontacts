@@ -5,6 +5,7 @@ import Login from '../screens/login/Login';
 import Contacts from '../screens/contacts/Contacts';
 import HeaderButtons from '../components/headerbuttons/HeaderButtons';
 import SeeContact from '../screens/seecontact/SeeContact';
+import EditCreateContact from '../screens/editcreate/EditCreateContact';
 
 const Stack = createStackNavigator();
 
@@ -32,6 +33,14 @@ const StackNavigator = () => {
         options={{
           title: 'Visualizar Contato',
           headerRight: () => <HeaderButtons seecontact />,
+        }}
+      />
+      <Stack.Screen
+        name="EditCreateContact"
+        component={EditCreateContact}
+        options={{
+          title: 'Criar Contato',
+          headerRight: () => <HeaderButtons edit />,
         }}
       />
     </Stack.Navigator>

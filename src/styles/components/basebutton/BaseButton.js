@@ -10,6 +10,7 @@ const BaseButton = props => {
 
   return (
     <BaseButtonStyled
+      onPress={props.onPress}
       color={props?.color}
       style={props?.style}
       circle={props?.circle}>

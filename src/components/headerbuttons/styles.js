@@ -11,3 +11,7 @@ export const IconView = styled.View`
   justify-content: center;
   align-items: center;
 `;
+
+export const SaveButtonView = styled.View`
+  margin-right: 16px;
+`;

@@ -4,7 +4,7 @@ import BaseButton from '../../styles/components/basebutton/BaseButton';
 import {BaseText} from '../../styles/baseUI';
 import {AbsoluteButtonContainer} from './styles';
 
-const AbsoluteButton = ({label, iconName, showText = true}) => {
+const AbsoluteButton = ({label, iconName, showText = true, onPress}) => {
   const labelLengthValue = useRef(new Animated.Value(0)).current;
 
   const growLabel = () => {
@@ -26,9 +26,7 @@ const AbsoluteButton = ({label, iconName, showText = true}) => {
   useEffect(() => {
     if (showText) {
       decreaseLabel();
-      setTimeout(() => {
-        // console.log(labelLengthValue);
-      }, 1000);
+      setTimeout(() => {}, 1000);
     } else {
       growLabel();
     }
@@ -37,6 +35,7 @@ const AbsoluteButton = ({label, iconName, showText = true}) => {
   return (
     <AbsoluteButtonContainer>
       <BaseButton
+        onPress={onPress}
         leftIcon={iconName}
         iconColor="#FFF"
         justIcon={!showText}

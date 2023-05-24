@@ -22,9 +22,10 @@ const Contacts = props => {
         navigation={props.navigation}
       />
       <AbsoluteButton
-        iconName={''}
+        iconName={''}
         label={'Criar contato'}
         showText={showAbsoluteButtonText}
+        onPress={() => props.navigation.navigate('EditCreateContact')}
       />
     </ContactsContainer>
   );
