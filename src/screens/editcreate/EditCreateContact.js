@@ -13,7 +13,6 @@ const EditCreateContact = props => {
   const formJSON = contact
     ? putValues(mockForms.register, contact)
     : mockForms.register;
-  console.log(formJSON);
 
   useEffect(() => {
     contact && props.navigation.setOptions({title: 'Editar contato'});
