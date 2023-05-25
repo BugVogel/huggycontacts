@@ -1,12 +1,8 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import {useTheme} from 'styled-components';
 import {InfoContactContainer, InfoItemContainer} from './styles';
-import {BaseText} from '../../styles/baseUI';
 import InfoItem from './InfoItem';
 
 const InfoContact = ({contact}) => {
-  console.log('PHONE: ', contact);
   const infosSection = [
     {label: 'Detalhes'},
     {

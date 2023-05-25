@@ -8,3 +8,10 @@ export const getContacts = async dispatch => {
     dispatch({type: 'LOADED'});
   });
 };
+
+export const addContact = async (dispatch, contact) => {
+  await axios.post('/contacts', {...contact}).then(response => {
+    dispatch({type: 'ADD_CONTACT', payload: {...contact}});
+    dispatch({type: 'SAVED_CONTACT'});
+  });
+};

@@ -14,7 +14,11 @@ const ListItem = ({content, avatar, isFirst = false, onPressFunction}) => {
   return (
     <ListItemContainer>
       <FirstletterView>
-        {isFirst && <BaseText fontWeight={500}>{content.trim()[0]}</BaseText>}
+        {isFirst && (
+          <BaseText fontWeight={500}>
+            {content.trim()[0].toUpperCase()}
+          </BaseText>
+        )}
       </FirstletterView>
       <ContentView overlayColor={'red'} onPress={onPressFunction}>
         <AvatarView>

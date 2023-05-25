@@ -14,7 +14,7 @@ const FormConstructor = ({formJSON, formState}) => {
     <>
       {formJSON.map((input, index) => {
         formValues[index] = {
-          name: input.placeholder,
+          name: input.name,
           ...(input?.value ? {value: input.value} : {}),
         };
         return (

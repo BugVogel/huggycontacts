@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {TouchableOpacity} from 'react-native';
 import {useTheme} from 'styled-components';
 import {useNavigation} from '@react-navigation/native';
@@ -7,10 +7,12 @@ import {HeaderButtonContainer, IconView, SaveButtonView} from './styles';
 import Icon from '../icon/Icon';
 import {BaseText} from '../../styles/baseUI';
 import BaseButton from '../../styles/components/basebutton/BaseButton';
+import {ReducerContext} from '../../context/ReducerProvider';
 
 const HeaderButtons = props => {
   const theme = useTheme();
   const navigation = useNavigation();
+  const {dispatchContacts} = useContext(ReducerContext).contacts;
 
   return (
     <HeaderButtonContainer>
@@ -37,7 +39,9 @@ const HeaderButtons = props => {
       )}
       {props.edit && (
         <SaveButtonView>
-          <BaseButton style={{padding: 12, paddingTop: 9, paddingBottom: 9}}>
+          <BaseButton
+            onPress={() => dispatchContacts({type: 'SAVE_CONTACT'})}
+            style={{padding: 12, paddingTop: 9, paddingBottom: 9}}>
             <BaseText color="#FFF">Salvar</BaseText>
           </BaseButton>
         </SaveButtonView>
