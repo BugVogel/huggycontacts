@@ -10,7 +10,7 @@ export const getContacts = async dispatch => {
 };
 
 export const addContact = async (dispatch, contact) => {
-  await axios.post('/contacts', {...contact}).then(response => {
+  await axios.post('/contacts', {...contact}).then(_ => {
     dispatch({type: 'ADD_CONTACT', payload: {...contact}});
   });
 };
@@ -22,4 +22,10 @@ export const updateContact = async (dispatch, contact) => {
       dispatch({type: 'UPDATED_CONTACT', payload: {...contact}});
     })
     .catch(e => console.log(e));
+};
+
+export const deleteContact = async (dispatch, contactId) => {
+  await axios.delete(`/contacts/${contactId}`).then(_ => {
+    dispatch({type: 'DELETED_CONTACT', payload: contactId});
+  });
 };

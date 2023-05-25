@@ -9,7 +9,12 @@ const initialUserState = {
   logged: false,
 };
 
-const initialContactsState = {loading: false, contact: [], saveContact: false};
+const initialContactsState = {
+  loading: false,
+  contact: [],
+  saveContact: false,
+  deleting: false,
+};
 
 const ReducerProvider = props => {
   const [userState, dispatchUser] = useReducer(userReducer, {

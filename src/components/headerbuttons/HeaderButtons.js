@@ -15,7 +15,6 @@ const HeaderButtons = props => {
   const {dispatchContacts} = useContext(ReducerContext).contacts;
   const stackArray = navigation.getState().routes;
   const actualScreen = stackArray[stackArray.length - 1];
-  // console.log('PARAM:', actualScreen.params);
 
   return (
     <HeaderButtonContainer>
@@ -35,7 +34,8 @@ const HeaderButtons = props => {
       )}
       {props.seecontact && (
         <IconView>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => dispatchContacts({type: 'DELETE_CONTACT'})}>
             <Icon name="" size={25} color={theme.colors.iconPrimary} />
           </TouchableOpacity>
         </IconView>

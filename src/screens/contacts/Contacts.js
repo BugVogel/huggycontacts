@@ -22,11 +22,11 @@ const Contacts = props => {
   }
 
   useEffect(() => {
-    if (isFocused) {
-      dispatchContacts({type: 'LOADING'});
-      getContacts(dispatchContacts);
-    }
-  }, [isFocused]);
+    // if (isFocused) {
+    dispatchContacts({type: 'LOADING'});
+    getContacts(dispatchContacts);
+    // }
+  }, []);
 
   return (
     <>

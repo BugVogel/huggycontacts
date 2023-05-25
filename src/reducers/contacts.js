@@ -39,8 +39,23 @@ export function reducer(state, action) {
       });
       return {
         ...state,
-        updatedContacts,
+        contacts: updatedContacts,
         updateContact: false,
+      };
+    case 'DELETE_CONTACT':
+      return {
+        ...state,
+        deleting: true,
+      };
+    case 'DELETED_CONTACT':
+      //remove from state.contact the id dipacthed
+      let newContactsAfterDelete = state.contacts.filter(
+        contact => contact.id != action.payload,
+      );
+      return {
+        ...state,
+        contacts: newContactsAfterDelete,
+        deleting: false,
       };
     default:
       return state;

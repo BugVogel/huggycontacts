@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {View, Text} from 'react-native';
+import React, {useState, useEffect, useContext} from 'react';
+import {View, Text, ActivityIndicator} from 'react-native';
 import {
   ContactBannerWrapper,
   InfoContactWrapper,
@@ -8,9 +8,12 @@ import {
 import ContactBanner from '../../components/contactbanner/ContactBanner';
 import InfoContact from '../../components/infocontact/InfoContact';
 import AbsoluteButton from '../../components/absolutebutton/AbsoluteButton';
+import {ReducerContext} from '../../context/ReducerProvider';
+import {deleteContact} from '../../apirequests/contacts';
 
 const SeeContact = props => {
   const [showAbsoluteButtonText, setShowAbsoluteButtonText] = useState(false);
+  const {contactsState, dispatchContacts} = useContext(ReducerContext).contacts;
   const [currentOffset, setCurrentOffset] = useState(0);
   const contact = props.route.params;
 
@@ -18,32 +21,45 @@ const SeeContact = props => {
     props.navigation.setOptions({title: contact.name});
   }, []);
 
+  useEffect(() => {
+    if (contactsState?.deleting) {
+      deleteContact(dispatchContacts, contact.id);
+      props.navigation.navigate('Contacts');
+    }
+  }, [contactsState?.deleting]);
+
   return (
     <>
-      <SeeContactsContainer
-        onScroll={event => {
-          if (event.nativeEvent.contentOffset.y > currentOffset) {
-            setShowAbsoluteButtonText(true);
-          } else {
-            setShowAbsoluteButtonText(false);
-          }
-          setCurrentOffset(event.nativeEvent.contentOffset.y);
-        }}>
-        <ContactBannerWrapper>
-          <ContactBanner name={contact.name} number={contact.id} />
-        </ContactBannerWrapper>
-        <InfoContactWrapper>
-          <InfoContact contact={contact} />
-        </InfoContactWrapper>
-      </SeeContactsContainer>
-      <AbsoluteButton
-        iconName={''}
-        label={'Editar contato'}
-        showText={showAbsoluteButtonText}
-        onPress={() =>
-          props.navigation.navigate('EditCreateContact', {...contact})
-        }
-      />
+      {contactsState?.deleting ? (
+        <ActivityIndicator />
+      ) : (
+        <>
+          <SeeContactsContainer
+            onScroll={event => {
+              if (event.nativeEvent.contentOffset.y > currentOffset) {
+                setShowAbsoluteButtonText(true);
+              } else {
+                setShowAbsoluteButtonText(false);
+              }
+              setCurrentOffset(event.nativeEvent.contentOffset.y);
+            }}>
+            <ContactBannerWrapper>
+              <ContactBanner name={contact.name} number={contact.id} />
+            </ContactBannerWrapper>
+            <InfoContactWrapper>
+              <InfoContact contact={contact} />
+            </InfoContactWrapper>
+          </SeeContactsContainer>
+          <AbsoluteButton
+            iconName={''}
+            label={'Editar contato'}
+            showText={showAbsoluteButtonText}
+            onPress={() =>
+              props.navigation.navigate('EditCreateContact', {...contact})
+            }
+          />
+        </>
+      )}
     </>
   );
 };
