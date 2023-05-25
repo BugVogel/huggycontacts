@@ -7,10 +7,11 @@ import {getFirstIndexs, orderListJSON} from './utils';
 import AbsoluteButton from '../../components/absolutebutton/AbsoluteButton';
 import {ReducerContext} from '../../context/ReducerProvider';
 import {getContacts} from '../../apirequests/contacts';
+import {useIsFocused} from '@react-navigation/native';
 
 const Contacts = props => {
   const {contactsState, dispatchContacts} = useContext(ReducerContext).contacts;
-
+  const isFocused = useIsFocused();
   const [showAbsoluteButtonText, setShowAbsoluteButtonText] = useState(false);
   let listJSONOrdely = [];
   let firstIndex = [];
@@ -21,9 +22,11 @@ const Contacts = props => {
   }
 
   useEffect(() => {
-    dispatchContacts({type: 'LOADING'});
-    getContacts(dispatchContacts);
-  }, []);
+    if (isFocused) {
+      dispatchContacts({type: 'LOADING'});
+      getContacts(dispatchContacts);
+    }
+  }, [isFocused]);
 
   return (
     <>
