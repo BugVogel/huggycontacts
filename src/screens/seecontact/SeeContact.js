@@ -30,7 +30,7 @@ const SeeContact = props => {
           setCurrentOffset(event.nativeEvent.contentOffset.y);
         }}>
         <ContactBannerWrapper>
-          <ContactBanner name={contact.name} number={230219} />
+          <ContactBanner name={contact.name} number={contact.id} />
         </ContactBannerWrapper>
         <InfoContactWrapper>
           <InfoContact contact={contact} />

@@ -12,7 +12,6 @@ const Contacts = props => {
   const {contactsState, dispatchContacts} = useContext(ReducerContext).contacts;
 
   const [showAbsoluteButtonText, setShowAbsoluteButtonText] = useState(false);
-  const listJSON = mockDatas.contactList;
   let listJSONOrdely = [];
   let firstIndex = [];
 

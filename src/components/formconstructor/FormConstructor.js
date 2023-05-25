@@ -21,7 +21,7 @@ const FormConstructor = ({formJSON, formState}) => {
           <InputView key={index}>
             <BaseInput
               placeholder={input.placeholder}
-              placeholderTextColor={'#1C1C1C'}
+              placeholderTextColor={'gray'}
               value={formState.formStateValues[index]?.value}
               onChangeText={text => {
                 let newFormValues = [...formState.formStateValues];

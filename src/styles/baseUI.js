@@ -36,4 +36,5 @@ export const BaseInput = withTheme(styled.TextInput`
   border-radius: 12px;
   border-width: 1px;
   border-color: #c9c9c9;
+  color: black;
 `);
