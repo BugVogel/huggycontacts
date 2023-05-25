@@ -12,6 +12,14 @@ export const getContacts = async dispatch => {
 export const addContact = async (dispatch, contact) => {
   await axios.post('/contacts', {...contact}).then(response => {
     dispatch({type: 'ADD_CONTACT', payload: {...contact}});
-    dispatch({type: 'SAVED_CONTACT'});
   });
+};
+
+export const updateContact = async (dispatch, contact) => {
+  await axios
+    .put(`/contacts/${contact.id}`, {...contact})
+    .then(response => {
+      dispatch({type: 'UPDATED_CONTACT', payload: {...contact}});
+    })
+    .catch(e => console.log(e));
 };

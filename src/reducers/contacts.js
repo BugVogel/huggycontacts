@@ -21,19 +21,27 @@ export function reducer(state, action) {
       return {
         ...state,
         contacts,
+        saveContact: false,
       };
     case 'SAVE_CONTACT':
       return {
         ...state,
         saveContact: true,
       };
-    case 'SAVED_CONTACT':
+    case 'UPDATE_CONTACT':
+      return {...state, updateContact: true};
+    case 'UPDATED_CONTACT':
+      const updatedContacts = state.contacts.map(contact => {
+        if (contact.id === action.payload.id) {
+          return {...contact, ...action.payload};
+        }
+        return contact;
+      });
       return {
         ...state,
-        saveContact: false,
+        updatedContacts,
+        updateContact: false,
       };
-    case 'UPDATE_CONTACT':
-      return state;
     default:
       return state;
   }

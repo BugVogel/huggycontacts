@@ -6,7 +6,7 @@ import mockForms from '../../mock/mockForms';
 import BaseButton from '../../styles/components/basebutton/BaseButton';
 import {putValues} from './utils';
 import {ReducerContext} from '../../context/ReducerProvider';
-import {addContact} from '../../apirequests/contacts';
+import {addContact, updateContact} from '../../apirequests/contacts';
 
 const EditCreateContact = props => {
   const [formStateValues, setFormStateValues] = useState([]);
@@ -23,15 +23,27 @@ const EditCreateContact = props => {
 
   useEffect(() => {
     if (contactsState?.saveContact) {
-      const contact = {};
+      const newContact = {};
       formStateValues.map(input => {
-        input?.value && (contact[input.name] = input.value);
+        input?.value && (newContact[input.name] = input.value);
       });
 
-      addContact(dispatchContacts, contact);
+      addContact(dispatchContacts, newContact);
       props.navigation.navigate('Contacts');
     }
   }, [contactsState?.saveContact]);
+
+  useEffect(() => {
+    if (contactsState?.updateContact) {
+      const newContact = {id: contact.id};
+      formStateValues.map(input => {
+        input?.value && (newContact[input.name] = input.value);
+      });
+
+      updateContact(dispatchContacts, newContact);
+      props.navigation.navigate('Contacts');
+    }
+  }, [contactsState?.updateContact]);
 
   return (
     <EditCreateContactContainer>

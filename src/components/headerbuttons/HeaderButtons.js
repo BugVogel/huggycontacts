@@ -13,6 +13,9 @@ const HeaderButtons = props => {
   const theme = useTheme();
   const navigation = useNavigation();
   const {dispatchContacts} = useContext(ReducerContext).contacts;
+  const stackArray = navigation.getState().routes;
+  const actualScreen = stackArray[stackArray.length - 1];
+  // console.log('PARAM:', actualScreen.params);
 
   return (
     <HeaderButtonContainer>
@@ -40,7 +43,13 @@ const HeaderButtons = props => {
       {props.edit && (
         <SaveButtonView>
           <BaseButton
-            onPress={() => dispatchContacts({type: 'SAVE_CONTACT'})}
+            onPress={() =>
+              dispatchContacts(
+                actualScreen.params === undefined
+                  ? {type: 'SAVE_CONTACT'}
+                  : {type: 'UPDATE_CONTACT'},
+              )
+            }
             style={{padding: 12, paddingTop: 9, paddingBottom: 9}}>
             <BaseText color="#FFF">Salvar</BaseText>
           </BaseButton>
