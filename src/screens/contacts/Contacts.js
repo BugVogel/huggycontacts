@@ -12,11 +12,12 @@ const Contacts = props => {
   const {contactsState, dispatchContacts} = useContext(ReducerContext).contacts;
 
   const [showAbsoluteButtonText, setShowAbsoluteButtonText] = useState(false);
+  const listJSON = mockDatas.contactList;
   let listJSONOrdely = [];
   let firstIndex = [];
 
-  if (!contactsState?.loading) {
-    listJSONOrdely = orderListJSON(contactsState.contacts);
+  if (contactsState?.contacts !== undefined && !contactsState?.loading) {
+    listJSONOrdely = orderListJSON(contactsState?.contacts);
     firstIndex = getFirstIndexs(listJSONOrdely);
   }
 
@@ -27,7 +28,7 @@ const Contacts = props => {
 
   return (
     <>
-      {contactsState?.loading ? (
+      {contactsState?.loading && typeof contactsState !== 'undefined' ? (
         <ActivityIndicator />
       ) : (
         <ContactsContainer>
