@@ -8,7 +8,9 @@ import {addContact, updateContact} from '../../apirequests/contacts';
 
 const EditCreateContact = props => {
   const [formStateValues, setFormStateValues] = useState([]);
-  const {contactsState, dispatchContacts} = useContext(ReducerContext).contacts;
+  const reducerContextValues = useContext(ReducerContext);
+  const {contactsState, dispatchContacts} = reducerContextValues.contacts;
+  const {dispatchNotifications} = reducerContextValues.notifications;
   const formState = {formStateValues, setFormStateValues};
   const contact = props.route.params;
   const formJSON = contact
@@ -34,7 +36,7 @@ const EditCreateContact = props => {
           (newContact[input.name] = newContact[input.name].toLowerCase());
       });
 
-      addContact(dispatchContacts, newContact);
+      addContact(dispatchContacts, newContact, dispatchNotifications);
       props.navigation.navigate('Contacts');
     }
   }, [contactsState?.saveContact]);
@@ -53,7 +55,7 @@ const EditCreateContact = props => {
           (newContact[input.name] = newContact[input.name].toLowerCase());
       });
 
-      updateContact(dispatchContacts, newContact);
+      updateContact(dispatchContacts, newContact, dispatchNotifications);
       props.navigation.navigate('Contacts');
     }
   }, [contactsState?.updateContact]);

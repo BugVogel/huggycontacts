@@ -13,7 +13,9 @@ import {deleteContact} from '../../apirequests/contacts';
 
 const SeeContact = props => {
   const [showAbsoluteButtonText, setShowAbsoluteButtonText] = useState(false);
-  const {contactsState, dispatchContacts} = useContext(ReducerContext).contacts;
+  const reducerContextValues = useContext(ReducerContext);
+  const {contactsState, dispatchContacts} = reducerContextValues.contacts;
+  const {dispatchNotifications} = reducerContextValues.notifications;
   const [currentOffset, setCurrentOffset] = useState(0);
   const contact = props.route.params;
 
@@ -23,7 +25,7 @@ const SeeContact = props => {
 
   useEffect(() => {
     if (contactsState?.deleting) {
-      deleteContact(dispatchContacts, contact.id);
+      deleteContact(dispatchContacts, contact.id, dispatchNotifications);
       props.navigation.navigate('Contacts');
     }
   }, [contactsState?.deleting]);

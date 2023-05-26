@@ -1,6 +1,7 @@
 import React, {createContext, useReducer} from 'react';
 import {reducer as userReducer} from '../reducers/user';
 import {reducer as contactsReducer} from '../reducers/contacts';
+import {reducer as notificationsReducer} from '../reducers/notifications';
 
 export const ReducerContext = createContext({});
 
@@ -16,6 +17,10 @@ const initialContactsState = {
   deleting: false,
 };
 
+const initialNotificationsState = {
+  showmessage: false,
+};
+
 const ReducerProvider = props => {
   const [userState, dispatchUser] = useReducer(userReducer, {
     ...initialUserState,
@@ -23,12 +28,17 @@ const ReducerProvider = props => {
   const [contactsState, dispatchContacts] = useReducer(contactsReducer, {
     ...initialContactsState,
   });
+  const [notificationsState, dispatchNotifications] = useReducer(
+    notificationsReducer,
+    {...initialNotificationsState},
+  );
 
   return (
     <ReducerContext.Provider
       value={{
         user: {userState, dispatchUser},
         contacts: {contactsState, dispatchContacts},
+        notifications: {notificationsState, dispatchNotifications},
       }}>
       {props.children}
     </ReducerContext.Provider>

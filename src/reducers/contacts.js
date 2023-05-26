@@ -54,6 +54,11 @@ export function reducer(state, action) {
         ...state,
         deleting: true,
       };
+    case 'NOT_DELETING':
+      return {
+        ...state,
+        deleting: false,
+      };
     case 'DELETED_CONTACT':
       //remove from state.contact the id dipacthed
       let newContactsAfterDelete = state.contacts.filter(

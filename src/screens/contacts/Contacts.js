@@ -10,7 +10,9 @@ import {getContacts} from '../../apirequests/contacts';
 import {useIsFocused} from '@react-navigation/native';
 
 const Contacts = props => {
-  const {contactsState, dispatchContacts} = useContext(ReducerContext).contacts;
+  const reducerContextValues = useContext(ReducerContext);
+  const {contactsState, dispatchContacts} = reducerContextValues.contacts;
+  const {dispatchNotifications} = reducerContextValues.notifications;
   const isFocused = useIsFocused();
   const [showAbsoluteButtonText, setShowAbsoluteButtonText] = useState(false);
   let listJSONOrdely = [];
@@ -24,7 +26,7 @@ const Contacts = props => {
   useEffect(() => {
     if (isFocused) {
       dispatchContacts({type: 'LOADING'});
-      getContacts(dispatchContacts);
+      getContacts(dispatchContacts, dispatchNotifications);
     }
   }, [isFocused]);
 
