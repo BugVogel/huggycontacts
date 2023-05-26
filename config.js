@@ -1,8 +1,0 @@
-import axios from 'axios';
-//Este arquivo precisaria ser ignorado
-//Para fins avaliativos não será ignorado
-axios.defaults.headers.common['Authorization'] =
-  'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImI2ZGExNTM0YjdkMTNhZjZiNDgyMWNmOWFmNjRiOTAwZjE0ZDFlNDY2NWRiZGFiODQ2NjllOWUxYjY1OWQyODQ2MWI1NmFmZWQzY2JlYzNlIn0.eyJhdWQiOiJBUFAtODNhOWI4MjUtYjZlZS00NWNiLTgzMjctZDIwMDE3ZDhiNzFiIiwianRpIjoiYjZkYTE1MzRiN2QxM2FmNmI0ODIxY2Y5YWY2NGI5MDBmMTRkMWU0NjY1ZGJkYWI4NDY2OWU5ZTFiNjU5ZDI4NDYxYjU2YWZlZDNjYmVjM2UiLCJpYXQiOjE2ODQ5NTMzNTYsIm5iZiI6MTY4NDk1MzM1NiwiZXhwIjoxNzAwODUwOTU2LCJzdWIiOiI1MTQ2OSIsInNjb3BlcyI6WyJpbnN0YWxsX2FwcCIsInJlYWRfYWdlbnRfcHJvZmlsZSJdfQ.ooYTpwo6Bl9x09myOJ_Js0re6eRNsJ65jcAcMnb-FSYvpYgXZxFYi-ycX0u-QiUKrs0_ul8TJOAiRM9krUWrNB_3N11_WGrdZpAeonL0eWC6uY2HSKCpkn2tFDyjLvA_vjwTNgtI27KNo_uIYpJ2fDoTXHb2DDS1DLavf9yNQsI';
-axios.defaults.headers.common['Content-Type'] = 'application/json';
-axios.defaults.headers.common['Accept'] = 'application/json';
-axios.defaults.baseURL = 'https://api.huggy.app/v3';
