@@ -28,8 +28,15 @@ export function reducer(state, action) {
         ...state,
         saveContact: true,
       };
+    case 'CANCEL_SAVE_CONTACT':
+      return {
+        ...state,
+        saveContact: false,
+      };
     case 'UPDATE_CONTACT':
       return {...state, updateContact: true};
+    case 'CANCEL_UPDATE_CONTACT':
+      return {...state, updateContact: false};
     case 'UPDATED_CONTACT':
       const updatedContacts = state.contacts.map(contact => {
         if (contact.id === action.payload.id) {

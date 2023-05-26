@@ -1,10 +1,8 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {View, Text} from 'react-native';
 import FormConstructor from '../../components/formconstructor/FormConstructor';
 import {EditCreateContactContainer} from './styles';
 import mockForms from '../../mock/mockForms';
-import BaseButton from '../../styles/components/basebutton/BaseButton';
-import {putValues} from './utils';
+import {formIsValidated, putValues} from './utils';
 import {ReducerContext} from '../../context/ReducerProvider';
 import {addContact, updateContact} from '../../apirequests/contacts';
 
@@ -18,14 +16,22 @@ const EditCreateContact = props => {
     : mockForms.register;
 
   useEffect(() => {
+    setFormStateValues(formJSON);
     contact && props.navigation.setOptions({title: 'Editar contato'});
   }, []);
 
   useEffect(() => {
     if (contactsState?.saveContact) {
+      if (!formIsValidated(setFormStateValues, formStateValues)) {
+        dispatchContacts({type: 'CANCEL_SAVE_CONTACT'});
+        return;
+      }
       const newContact = {};
       formStateValues.map(input => {
         input?.value && (newContact[input.name] = input.value);
+        newContact[input.name] &&
+          input?.name === 'email' &&
+          (newContact[input.name] = newContact[input.name].toLowerCase());
       });
 
       addContact(dispatchContacts, newContact);
@@ -35,9 +41,16 @@ const EditCreateContact = props => {
 
   useEffect(() => {
     if (contactsState?.updateContact) {
+      if (!formIsValidated(setFormStateValues, formStateValues)) {
+        dispatchContacts({type: 'CANCEL_UPDATE_CONTACT'});
+        return;
+      }
       const newContact = {id: contact.id};
       formStateValues.map(input => {
         input?.value && (newContact[input.name] = input.value);
+        newContact[input.name] &&
+          input?.name === 'email' &&
+          (newContact[input.name] = newContact[input.name].toLowerCase());
       });
 
       updateContact(dispatchContacts, newContact);
@@ -47,7 +60,7 @@ const EditCreateContact = props => {
 
   return (
     <EditCreateContactContainer>
-      <FormConstructor formJSON={formJSON} formState={formState} />
+      <FormConstructor formState={formState} />
     </EditCreateContactContainer>
   );
 };

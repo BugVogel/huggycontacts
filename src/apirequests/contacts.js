@@ -21,7 +21,7 @@ export const updateContact = async (dispatch, contact) => {
     .then(response => {
       dispatch({type: 'UPDATED_CONTACT', payload: {...contact}});
     })
-    .catch(e => console.log(e));
+    .catch(e => dispatch({type: 'CANCEL_UPDATE_CONTACT'}));
 };
 
 export const deleteContact = async (dispatch, contactId) => {

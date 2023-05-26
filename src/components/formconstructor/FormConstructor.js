@@ -1,9 +1,8 @@
 import React, {useEffect} from 'react';
-import {View, Text} from 'react-native';
-import {BaseInput} from '../../styles/baseUI';
-import {InputView} from './styles';
+import {BaseInput, BaseText} from '../../styles/baseUI';
+import {AlertTextView, InputView} from './styles';
 
-const FormConstructor = ({formJSON, formState}) => {
+const FormConstructor = ({formState}) => {
   let formValues = [...formState.formStateValues];
 
   useEffect(() => {
@@ -12,23 +11,60 @@ const FormConstructor = ({formJSON, formState}) => {
 
   return (
     <>
-      {formJSON.map((input, index) => {
-        formValues[index] = {
-          name: input.name,
-          ...(input?.value ? {value: input.value} : {}),
-        };
+      {formValues.map((input, index) => {
         return (
           <InputView key={index}>
             <BaseInput
+              style={
+                input?.alert || input?.alertEmail || input?.alertMobile
+                  ? {
+                      borderRightColor: 'red',
+                      borderLeftColor: 'red',
+                      borderTopColor: 'red',
+                      borderBottomColor: 'red',
+                    }
+                  : {}
+              }
               placeholder={input.placeholder}
-              placeholderTextColor={'gray'}
+              placeholderTextColor={
+                input?.alert || input?.alertEmail || input?.alertMobile
+                  ? 'red'
+                  : 'gray'
+              }
               value={formState.formStateValues[index]?.value}
               onChangeText={text => {
                 let newFormValues = [...formState.formStateValues];
-                newFormValues[index] = {...newFormValues[index], value: text};
+                newFormValues[index] = {
+                  ...newFormValues[index],
+                  value: text,
+                  alert: false,
+                  alertEmail: false,
+                  alertMobile: false,
+                };
                 formState.setFormStateValues(newFormValues);
               }}
             />
+            {input?.alert && (
+              <AlertTextView>
+                <BaseText color="red" fontSize={12}>
+                  Campo obrigatório
+                </BaseText>
+              </AlertTextView>
+            )}
+            {input?.alertEmail && (
+              <AlertTextView>
+                <BaseText color="red" fontSize={12}>
+                  Email inválido
+                </BaseText>
+              </AlertTextView>
+            )}
+            {input?.alertMobile && (
+              <AlertTextView>
+                <BaseText color="red" fontSize={12}>
+                  Número de celular inválido
+                </BaseText>
+              </AlertTextView>
+            )}
           </InputView>
         );
       })}
