@@ -8,11 +8,15 @@ import Icon from '../icon/Icon';
 import {BaseText} from '../../styles/baseUI';
 import BaseButton from '../../styles/components/basebutton/BaseButton';
 import {ReducerContext} from '../../context/ReducerProvider';
+import {setLoggedLocalStorage} from '../../apirequests/user';
 
 const HeaderButtons = props => {
   const theme = useTheme();
   const navigation = useNavigation();
-  const {dispatchContacts} = useContext(ReducerContext).contacts;
+  const reducerContextValues = useContext(ReducerContext);
+  const {dispatchContacts} = reducerContextValues.contacts;
+  const {dispatchUser} = reducerContextValues.user;
+
   const stackArray = navigation.getState().routes;
   const actualScreen = stackArray[stackArray.length - 1];
 
@@ -26,7 +30,11 @@ const HeaderButtons = props => {
             </TouchableOpacity>
           </IconView>
           <IconView>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setLoggedLocalStorage(dispatchUser, false);
+                navigation.navigate('Home');
+              }}>
               <Icon name="" size={25} color={theme.colors.iconPrimary} />
             </TouchableOpacity>
           </IconView>

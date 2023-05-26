@@ -1,5 +1,4 @@
-import React, {createContext, useEffect, useState, useReducer} from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, {createContext, useReducer} from 'react';
 import {reducer as userReducer} from '../reducers/user';
 import {reducer as contactsReducer} from '../reducers/contacts';
 
@@ -7,6 +6,7 @@ export const ReducerContext = createContext({});
 
 const initialUserState = {
   logged: false,
+  loading: false,
 };
 
 const initialContactsState = {
