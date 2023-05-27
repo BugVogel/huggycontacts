@@ -31,10 +31,16 @@ export const BaseText = withTheme(styled.Text`
 `);
 
 export const BaseInput = withTheme(styled.TextInput`
-  background-color: ${props => props.theme.colors.secondary};
-  padding: 16px;
+  background-color: ${props =>
+    props?.plain ? `white` : props.theme.colors.secondary};
+  ${props =>
+    props?.plain
+      ? ``
+      : `padding: 16px;
   border-radius: 12px;
   border-width: 1px;
-  border-color: #c9c9c9;
+  border-color: #c9c9c9;`}
+
   color: black;
+  flex: 1;
 `);

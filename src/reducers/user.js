@@ -8,6 +8,12 @@ export function reducer(state, action) {
     case 'LOADING_LOG':
       return {...state, loading: true};
 
+    case 'SEARCHBAR_ENABLED':
+      return {...state, searchbarEnabled: true};
+
+    case 'SEARCHBAR_DISABLED':
+      return {...state, searchbarEnabled: false};
+
     default:
       return {...state};
   }

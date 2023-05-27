@@ -8,7 +8,6 @@ import Icon from '../icon/Icon';
 import {BaseText} from '../../styles/baseUI';
 import BaseButton from '../../styles/components/basebutton/BaseButton';
 import {ReducerContext} from '../../context/ReducerProvider';
-import {setLoggedLocalStorage} from '../../apirequests/user';
 
 const HeaderButtons = props => {
   const theme = useTheme();
@@ -25,7 +24,8 @@ const HeaderButtons = props => {
       {props.contacts && (
         <>
           <IconView>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => dispatchUser({type: 'SEARCHBAR_ENABLED'})}>
               <Icon name="" size={25} color={theme.colors.iconPrimary} />
             </TouchableOpacity>
           </IconView>

@@ -8,6 +8,7 @@ export const ReducerContext = createContext({});
 const initialUserState = {
   logged: false,
   loading: false,
+  searchbarEnabled: false,
 };
 
 const initialContactsState = {
