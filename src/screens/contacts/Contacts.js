@@ -39,15 +39,24 @@ const Contacts = props => {
     }
     if (userState.searchbarEnabled) {
       let newSearchList = [...contactsState.contacts].filter(contact => {
-        return contact.name
-          .toLowerCase()
-          .includes(userState.searchString.toLowerCase());
+        return (
+          contact?.name
+            ?.toLowerCase()
+            .includes(userState.searchString.toLowerCase()) ||
+          contact?.email
+            ?.toLowerCase()
+            .includes(userState.searchString.toLowerCase()) ||
+          contact?.phone
+            ?.toLowerCase()
+            .includes(userState.searchString.toLowerCase()) ||
+          contact?.mobile
+            ?.toLowerCase()
+            .includes(userState.searchString.toLowerCase())
+        );
       });
 
       newSearchList = orderListJSON(newSearchList);
-
       setContactsList([...newSearchList]);
-
       dispatchUser({type: 'SEARCH_LOADED'});
     }
   }, [userState?.searchString]);
