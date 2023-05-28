@@ -8,6 +8,7 @@ import Icon from '../icon/Icon';
 import {BaseText} from '../../styles/baseUI';
 import BaseButton from '../../styles/components/basebutton/BaseButton';
 import {ReducerContext} from '../../context/ReducerProvider';
+import {setLoggedLocalStorage} from '../../apirequests/user';
 
 const HeaderButtons = props => {
   const theme = useTheme();
