@@ -28,12 +28,19 @@ const SearchBar = props => {
           value={searchText}
           onChangeText={text => {
             setSearchText(text);
+            dispatchUser({type: 'SEARCH_LOADING'});
+            dispatchUser({type: 'SEARCH_STRING', payload: text});
           }}
         />
       </SearchBarInputView>
       {searchText !== '' && (
         <IconView>
-          <TouchableOpacity onPress={() => setSearchText('')}>
+          <TouchableOpacity
+            onPress={() => {
+              setSearchText('');
+              dispatchUser({type: 'SEARCH_STRING', payload: ''});
+              dispatchUser({type: 'SEARCH_LOADED', payload: ''});
+            }}>
             <Icon name="" size={25} color={theme.colors.iconPrimary} />
           </TouchableOpacity>
         </IconView>

@@ -1,11 +1,17 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {View, Text, FlatList} from 'react-native';
 import ListItem from './ListItem';
 import EmptyList from '../emptylist/EmptyList';
-import {ListContainer} from './styles';
+import {EmptySearchAdviseView, ListContainer} from './styles';
+import {getFirstIndexs} from './util';
+import {ReducerContext} from '../../context/ReducerProvider';
+import {BaseText} from '../../styles/baseUI';
 
-const List = ({listJSON, firstIndexs, setIsGoingUp = () => {}, navigation}) => {
+const List = ({listJSON, setIsGoingUp = () => {}, navigation}) => {
   const [currentOffset, setCurrentOffset] = useState(0);
+  const {userState} = useContext(ReducerContext).user;
+  const firstIndexs = getFirstIndexs(listJSON);
+
   return (
     <ListContainer>
       <FlatList
@@ -21,6 +27,7 @@ const List = ({listJSON, firstIndexs, setIsGoingUp = () => {}, navigation}) => {
         renderItem={({item, index}) => {
           return (
             <ListItem
+              key={index}
               onPressFunction={() =>
                 navigation.navigate('SeeContact', {...item})
               }
@@ -29,7 +36,18 @@ const List = ({listJSON, firstIndexs, setIsGoingUp = () => {}, navigation}) => {
             />
           );
         }}
-        ListEmptyComponent={EmptyList}
+        {...(!userState.searchbarEnabled
+          ? {ListEmptyComponent: EmptyList}
+          : {})}
+        ListEmptyComponent={
+          !userState.searchbarEnabled ? (
+            EmptyList
+          ) : (
+            <EmptySearchAdviseView>
+              <BaseText color="gray">Nenhum resultado encontrado</BaseText>
+            </EmptySearchAdviseView>
+          )
+        }
       />
     </ListContainer>
   );

@@ -9,11 +9,13 @@ const initialUserState = {
   logged: false,
   loading: false,
   searchbarEnabled: false,
+  searchLoading: false,
+  searchString: '',
 };
 
 const initialContactsState = {
   loading: false,
-  contact: [],
+  contacts: [],
   saveContact: false,
   deleting: false,
 };

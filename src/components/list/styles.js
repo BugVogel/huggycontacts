@@ -40,3 +40,10 @@ export const AvatarView = styled.View`
   align-items: center;
   margin-right: 16px;
 `;
+
+export const EmptySearchAdviseView = styled.View`
+  flex: 1;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;

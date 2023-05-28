@@ -3,25 +3,20 @@ import {View, Text, ActivityIndicator} from 'react-native';
 import {ContactsContainer} from './styles';
 import List from '../../components/list/List';
 import mockDatas from '../../mock/mockDatas';
-import {getFirstIndexs, orderListJSON} from './utils';
+import {orderListJSON} from './utils';
 import AbsoluteButton from '../../components/absolutebutton/AbsoluteButton';
 import {ReducerContext} from '../../context/ReducerProvider';
 import {getContacts} from '../../apirequests/contacts';
 import {useIsFocused} from '@react-navigation/native';
 
 const Contacts = props => {
+  const [showAbsoluteButtonText, setShowAbsoluteButtonText] = useState(false);
+  const [contactsList, setContactsList] = useState([]);
   const reducerContextValues = useContext(ReducerContext);
   const {contactsState, dispatchContacts} = reducerContextValues.contacts;
   const {dispatchNotifications} = reducerContextValues.notifications;
+  const {userState, dispatchUser} = reducerContextValues.user;
   const isFocused = useIsFocused();
-  const [showAbsoluteButtonText, setShowAbsoluteButtonText] = useState(false);
-  let listJSONOrdely = [];
-  let firstIndex = [];
-
-  if (contactsState?.contacts !== undefined && !contactsState?.loading) {
-    listJSONOrdely = orderListJSON(contactsState?.contacts);
-    firstIndex = getFirstIndexs(listJSONOrdely);
-  }
 
   useEffect(() => {
     if (isFocused) {
@@ -30,15 +25,43 @@ const Contacts = props => {
     }
   }, [isFocused]);
 
+  useEffect(() => {
+    if (contactsState?.contacts !== undefined && !contactsState?.loading) {
+      setContactsList(orderListJSON(contactsState.contacts));
+    }
+  }, [contactsState?.loading]);
+
+  useEffect(() => {
+    if (userState?.searchString === '') {
+      setContactsList(orderListJSON(contactsState.contacts));
+      dispatchUser({type: 'SEARCH_LOADED'});
+      return;
+    }
+    if (userState.searchbarEnabled) {
+      let newSearchList = [...contactsState.contacts].filter(contact => {
+        return contact.name
+          .toLowerCase()
+          .includes(userState.searchString.toLowerCase());
+      });
+
+      newSearchList = orderListJSON(newSearchList);
+
+      setContactsList([...newSearchList]);
+
+      dispatchUser({type: 'SEARCH_LOADED'});
+    }
+  }, [userState?.searchString]);
+
   return (
     <>
-      {contactsState?.loading && typeof contactsState !== 'undefined' ? (
+      {contactsState?.loading ||
+      contactsState?.contacts === undefined ||
+      userState.searchLoading ? (
         <ActivityIndicator />
       ) : (
         <ContactsContainer>
           <List
-            listJSON={listJSONOrdely}
-            firstIndexs={firstIndex}
+            listJSON={contactsList}
             setIsGoingUp={isGoingUp => setShowAbsoluteButtonText(isGoingUp)}
             navigation={props.navigation}
           />
