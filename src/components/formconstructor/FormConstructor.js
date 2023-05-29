@@ -32,7 +32,6 @@ const FormConstructor = ({formState}) => {
           <InputView key={index}>
             <BaseInput
               onFocus={() => setInputActivated(index)}
-              // onBlur={() => setInputActivated(undefined)}
               style={
                 input?.alert || input?.alertEmail || input?.alertMobile
                   ? {
