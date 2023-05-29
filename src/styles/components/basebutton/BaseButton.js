@@ -12,13 +12,9 @@ const BaseButton = props => {
     <BaseButtonStyled
       onPress={props.onPress}
       color={props?.color}
-      style={props?.style}
-      circle={props?.circle}>
+      style={props?.style}>
       {props?.leftIcon && (
-        <IconView
-          style={{
-            marginRight: props?.justIcon ? 0 : 8,
-          }}>
+        <IconView>
           <Icon
             size={18}
             name={props.leftIcon}

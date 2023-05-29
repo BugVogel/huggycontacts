@@ -16,7 +16,7 @@ import {
 } from '../../styles/baseUI';
 
 const SeeContact = props => {
-  const [showAbsoluteButtonText, setShowAbsoluteButtonText] = useState(false);
+  const [showAbsoluteButtonText, setShowAbsoluteButtonText] = useState(true);
   const reducerContextValues = useContext(ReducerContext);
   const {contactsState, dispatchContacts} = reducerContextValues.contacts;
   const {dispatchNotifications} = reducerContextValues.notifications;
@@ -45,9 +45,9 @@ const SeeContact = props => {
           <SeeContactsContainer
             onScroll={event => {
               if (event.nativeEvent.contentOffset.y > currentOffset) {
-                setShowAbsoluteButtonText(true);
-              } else {
                 setShowAbsoluteButtonText(false);
+              } else {
+                setShowAbsoluteButtonText(true);
               }
               setCurrentOffset(event.nativeEvent.contentOffset.y);
             }}>

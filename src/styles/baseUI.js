@@ -3,7 +3,7 @@ import {withTheme} from 'styled-components';
 
 export const BaseButtonStyled = withTheme(styled.TouchableOpacity.attrs(
   props => {
-    return {style: props.style};
+    return {style: props?.style};
   },
 )`
   background-color: ${props =>
@@ -12,11 +12,10 @@ export const BaseButtonStyled = withTheme(styled.TouchableOpacity.attrs(
         ? props.theme.colors[props.color]
         : props.color
       : props.theme.colors.primary};
-  border-radius: ${props => (props?.circle ? '30px' : '8px')};
-  ${props =>
-    props?.circle
-      ? 'padding: 17px;'
-      : 'padding: 9px; padding-right: 12px; padding-left: 12px;'}
+  border-radius: 8px;
+  padding: 9px;
+  padding-right: 12px;
+  padding-left: 12px;
 
   flex-direction: row;
 `);
@@ -51,9 +50,9 @@ export const ActivityIndicatorContainer = styled.View`
   align-items: center;
 `;
 
-export const BaseActivityIndicator = withTheme(styled.ActivityIndicator.attrs(
-  props => ({
+export const BaseActivityIndicator = withTheme(
+  styled.ActivityIndicator.attrs(props => ({
     color: props.theme.colors.primary,
     size: 'large',
-  }),
-)``);
+  }))``,
+);

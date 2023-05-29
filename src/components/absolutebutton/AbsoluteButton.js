@@ -1,49 +1,52 @@
 import React, {useEffect, useRef} from 'react';
-import {View, Text, Animated} from 'react-native';
-import BaseButton from '../../styles/components/basebutton/BaseButton';
-import {BaseText} from '../../styles/baseUI';
-import {AbsoluteButtonContainer} from './styles';
+import {Animated} from 'react-native';
+import {AbsoluteButtonContainer, Button, IconView} from './styles';
+import Icon from '../icon/Icon';
 
 const AbsoluteButton = ({label, iconName, showText = true, onPress}) => {
-  const labelLengthValue = useRef(new Animated.Value(0)).current;
+  const initialWidth = 100;
+  const labelLengthValue = useRef(new Animated.Value(initialWidth)).current;
 
   const growLabel = () => {
     Animated.timing(labelLengthValue, {
-      toValue: label.length,
-      duration: 1000,
-      useNativeDriver: true,
+      toValue: initialWidth,
+      duration: 300,
+      useNativeDriver: false,
     }).start();
   };
 
   const decreaseLabel = () => {
     Animated.timing(labelLengthValue, {
       toValue: 0,
-      duration: 1000,
-      useNativeDriver: true,
+      duration: 300,
+      useNativeDriver: false,
     }).start();
   };
 
   useEffect(() => {
     if (showText) {
-      decreaseLabel();
-      setTimeout(() => {}, 1000);
-    } else {
       growLabel();
+    } else {
+      decreaseLabel();
     }
   }, [showText]);
 
   return (
     <AbsoluteButtonContainer>
-      <BaseButton
-        onPress={onPress}
-        leftIcon={iconName}
-        iconColor="#FFF"
-        justIcon={!showText}
-        circle={!showText}>
-        {showText && (
-          <BaseText color="#FFF">{label.substring(0, label.length)}</BaseText>
-        )}
-      </BaseButton>
+      <Button onPress={onPress} leftIcon={iconName}>
+        <IconView hasText={showText}>
+          <Icon name={iconName} color={'#FFF'} size={20} />
+        </IconView>
+        <Animated.Text
+          style={{
+            color: '#FFF',
+            width: labelLengthValue,
+            fontSize: 14,
+          }}
+          numberOfLines={1}>
+          {label}
+        </Animated.Text>
+      </Button>
     </AbsoluteButtonContainer>
   );
 };

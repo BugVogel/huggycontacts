@@ -13,7 +13,7 @@ import {
 } from '../../styles/baseUI';
 
 const Contacts = props => {
-  const [showAbsoluteButtonText, setShowAbsoluteButtonText] = useState(false);
+  const [showAbsoluteButtonText, setShowAbsoluteButtonText] = useState(true);
   const [contactsList, setContactsList] = useState([]);
   const reducerContextValues = useContext(ReducerContext);
   const {contactsState, dispatchContacts} = reducerContextValues.contacts;

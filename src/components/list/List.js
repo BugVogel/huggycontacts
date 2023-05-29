@@ -17,9 +17,9 @@ const List = ({listJSON, setIsGoingUp = () => {}, navigation}) => {
       <FlatList
         onScroll={event => {
           if (event.nativeEvent.contentOffset.y > currentOffset) {
-            setIsGoingUp(true);
-          } else {
             setIsGoingUp(false);
+          } else {
+            setIsGoingUp(true);
           }
           setCurrentOffset(event.nativeEvent.contentOffset.y);
         }}
