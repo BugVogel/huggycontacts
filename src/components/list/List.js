@@ -1,5 +1,6 @@
 import React, {useState, useContext} from 'react';
-import {View, Text, FlatList} from 'react-native';
+import {FlatList} from 'react-native';
+
 import ListItem from './ListItem';
 import EmptyList from '../emptylist/EmptyList';
 import {EmptySearchAdviseView, ListContainer} from './styles';

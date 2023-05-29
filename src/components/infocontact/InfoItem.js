@@ -1,6 +1,5 @@
 import React from 'react';
 import {useTheme} from 'styled-components';
-import {View, Text} from 'react-native';
 
 import {InfoItemContainer} from './styles';
 import {BaseText} from '../../styles/baseUI';

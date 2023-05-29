@@ -1,5 +1,6 @@
 import React from 'react';
 import {ThemeProvider as ThemeStyledComponentProvider} from 'styled-components';
+
 import light from '../styles/themes/light';
 
 const ThemeProvider = props => {

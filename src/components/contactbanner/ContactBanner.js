@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+
 import {ContactBannerContainer} from './styles';
 import Avatar from '../avatar/Avatar';
 import {BaseText} from '../../styles/baseUI';

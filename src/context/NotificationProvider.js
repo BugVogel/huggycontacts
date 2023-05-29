@@ -1,5 +1,6 @@
 import React, {useContext, useEffect} from 'react';
 import {Alert} from 'react-native';
+
 import {ReducerContext} from './ReducerProvider';
 
 const NotificationProvider = props => {

@@ -1,5 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import {Animated} from 'react-native';
+
 import {AbsoluteButtonContainer, Button, IconView} from './styles';
 import Icon from '../icon/Icon';
 

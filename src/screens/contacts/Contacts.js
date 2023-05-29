@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
+import {useIsFocused} from '@react-navigation/native';
 
 import {ContactsContainer} from './styles';
 import List from '../../components/list/List';
@@ -6,7 +7,6 @@ import {orderListJSON} from './utils';
 import AbsoluteButton from '../../components/absolutebutton/AbsoluteButton';
 import {ReducerContext} from '../../context/ReducerProvider';
 import {getContacts} from '../../apirequests/contacts';
-import {useIsFocused} from '@react-navigation/native';
 import {
   ActivityIndicatorContainer,
   BaseActivityIndicator,

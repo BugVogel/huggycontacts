@@ -1,5 +1,6 @@
 import React from 'react';
-import {InfoContactContainer, InfoItemContainer} from './styles';
+
+import {InfoContactContainer} from './styles';
 import InfoItem from './InfoItem';
 
 const InfoContact = ({contact}) => {
