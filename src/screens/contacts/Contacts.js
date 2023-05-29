@@ -79,12 +79,16 @@ const Contacts = props => {
             setIsGoingUp={isGoingUp => setShowAbsoluteButtonText(isGoingUp)}
             navigation={props.navigation}
           />
-          <AbsoluteButton
-            iconName={''}
-            label={'Criar contato'}
-            showText={showAbsoluteButtonText}
-            onPress={() => props.navigation.navigate('EditCreateContact')}
-          />
+          {contactsList.length !== 0 &&
+            contactsList !== undefined &&
+            contactsList !== null && (
+              <AbsoluteButton
+                iconName={''}
+                label={'Criar contato'}
+                showText={showAbsoluteButtonText}
+                onPress={() => props.navigation.navigate('EditCreateContact')}
+              />
+            )}
         </ContactsContainer>
       )}
     </>

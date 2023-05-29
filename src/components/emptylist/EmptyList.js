@@ -1,10 +1,13 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {Image} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+
 import {EmptyListContainer, ImageView, TextView} from './styles';
 import {BaseText} from '../../styles/baseUI';
 import BaseButton from '../../styles/components/basebutton/BaseButton';
 
 const EmptyList = props => {
+  const navigation = useNavigation();
   return (
     <EmptyListContainer>
       <ImageView>
@@ -15,7 +18,10 @@ const EmptyList = props => {
       <TextView>
         <BaseText color="#757575">Ainda não há contatos</BaseText>
       </TextView>
-      <BaseButton leftIcon={''} iconColor={'#FFF'}>
+      <BaseButton
+        leftIcon={''}
+        iconColor={'#FFF'}
+        onPress={() => navigation.navigate('EditCreateContact')}>
         <BaseText color="#FFF">Adicionar contato</BaseText>
       </BaseButton>
     </EmptyListContainer>
