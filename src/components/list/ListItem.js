@@ -10,7 +10,7 @@ import {
 import {BaseText} from '../../styles/baseUI';
 import Avatar from '../avatar/Avatar';
 
-const ListItem = ({content, avatar, isFirst = false, onPressFunction}) => {
+const ListItem = ({content, photo, isFirst = false, onPressFunction}) => {
   return (
     <ListItemContainer>
       <FirstletterView>
@@ -22,7 +22,7 @@ const ListItem = ({content, avatar, isFirst = false, onPressFunction}) => {
       </FirstletterView>
       <ContentView overlayColor={'red'} onPress={onPressFunction}>
         <AvatarView>
-          <Avatar name={content} />
+          <Avatar name={content} photo={photo} />
         </AvatarView>
         <TextView>
           <BaseText>{content}</BaseText>

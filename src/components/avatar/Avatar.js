@@ -1,10 +1,10 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {Image} from 'react-native';
 
 import {AvatarContainer} from './styles';
 import {BaseText} from '../../styles/baseUI';
 
-const Avatar = ({name, size = 40}) => {
+const Avatar = ({name, size = 40, photo}) => {
   const nameArray = name.split(' ');
   const acronym =
     nameArray[0][0].toUpperCase() +
@@ -13,9 +13,19 @@ const Avatar = ({name, size = 40}) => {
       : '');
   return (
     <AvatarContainer style={{width: size, height: size}}>
-      <BaseText color={'#180D6E'} fontSize={size * 0.35}>
-        {acronym}
-      </BaseText>
+      {photo && !photo.includes('avatar-user-boy') ? (
+        <Image
+          style={{height: '100%', width: '100%', borderRadius: 100}}
+          source={{
+            uri: photo,
+          }}
+          resizeMode="contain"
+        />
+      ) : (
+        <BaseText color={'#180D6E'} fontSize={size * 0.35}>
+          {acronym}
+        </BaseText>
+      )}
     </AvatarContainer>
   );
 };

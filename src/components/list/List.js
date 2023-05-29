@@ -31,8 +31,9 @@ const List = ({listJSON, setIsGoingUp = () => {}, navigation}) => {
               onPressFunction={() =>
                 navigation.navigate('SeeContact', {...item})
               }
-              content={item.name}
+              content={item?.name}
               isFirst={firstIndexs.includes(index)}
+              photo={item?.photo}
             />
           );
         }}
