@@ -1,36 +1,53 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
+import {useTheme} from 'styled-components';
+
 import {BaseInput, BaseText} from '../../styles/baseUI';
 import {AlertTextView, InputView} from './styles';
 
 const FormConstructor = ({formState}) => {
   let formValues = [...formState.formStateValues];
+  const theme = useTheme();
+  const [inputActivated, setInputActivated] = useState(undefined);
 
   useEffect(() => {
     formState.setFormStateValues(formValues);
   }, []);
+
+  const putBordercolor = color => {
+    return {
+      borderRightColor: color,
+      borderLeftColor: color,
+      borderTopColor: color,
+      borderBottomColor: color,
+    };
+  };
 
   return (
     <>
       {formValues.map((input, index) => {
         const verifyPhoneOrMobile =
           input.name === 'mobile' || input.name === 'phone';
+
         return (
           <InputView key={index}>
             <BaseInput
+              onFocus={() => setInputActivated(index)}
+              // onBlur={() => setInputActivated(undefined)}
               style={
                 input?.alert || input?.alertEmail || input?.alertMobile
                   ? {
-                      borderRightColor: 'red',
-                      borderLeftColor: 'red',
-                      borderTopColor: 'red',
-                      borderBottomColor: 'red',
+                      ...putBordercolor('red'),
                     }
+                  : inputActivated === index
+                  ? {...putBordercolor(theme.colors.primary)}
                   : {}
               }
               placeholder={input.placeholder}
               placeholderTextColor={
                 input?.alert || input?.alertEmail || input?.alertMobile
                   ? 'red'
+                  : inputActivated === index
+                  ? theme.colors.primary
                   : 'gray'
               }
               value={formState.formStateValues[index]?.value}
