@@ -5,8 +5,9 @@ export const getLoggedLocalStorage = async dispatch => {
     const user = JSON.parse(response);
     if (user !== null && user?.logged) {
       dispatch({type: 'LOGGED_IN'});
+    } else {
+      dispatch({type: 'LOGGED_OUT'});
     }
-    dispatch({type: 'LOGGED_OUT'});
   });
 };
 
