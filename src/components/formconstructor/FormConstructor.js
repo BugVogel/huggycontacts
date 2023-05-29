@@ -12,6 +12,8 @@ const FormConstructor = ({formState}) => {
   return (
     <>
       {formValues.map((input, index) => {
+        const verifyPhoneOrMobile =
+          input.name === 'mobile' || input.name === 'phone';
         return (
           <InputView key={index}>
             <BaseInput
@@ -32,17 +34,31 @@ const FormConstructor = ({formState}) => {
                   : 'gray'
               }
               value={formState.formStateValues[index]?.value}
+              inputMode={
+                input.name === 'mobile' || input.name === 'phone'
+                  ? 'numeric'
+                  : input.name
+                  ? 'email'
+                  : 'text'
+              }
               onChangeText={text => {
                 let newFormValues = [...formState.formStateValues];
+                const textJustNumber = text.replace(/[^0-9]/g, '');
+                const maskedText =
+                  (text !== '' ? '+' : '') +
+                  textJustNumber.slice(0, 2) +
+                  (text.length >= 2 ? ' ' : '') +
+                  textJustNumber.slice(2, textJustNumber.length);
                 newFormValues[index] = {
                   ...newFormValues[index],
-                  value: text,
+                  value: verifyPhoneOrMobile ? maskedText : text,
                   alert: false,
                   alertEmail: false,
                   alertMobile: false,
                 };
                 formState.setFormStateValues(newFormValues);
               }}
+              {...(verifyPhoneOrMobile ? {maxLength: 19} : {})}
             />
             {input?.alert && (
               <AlertTextView>
