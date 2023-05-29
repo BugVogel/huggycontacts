@@ -44,3 +44,16 @@ export const BaseInput = withTheme(styled.TextInput`
   color: black;
   flex: 1;
 `);
+
+export const ActivityIndicatorContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const BaseActivityIndicator = withTheme(styled.ActivityIndicator.attrs(
+  props => ({
+    color: props.theme.colors.primary,
+    size: 'large',
+  }),
+)``);

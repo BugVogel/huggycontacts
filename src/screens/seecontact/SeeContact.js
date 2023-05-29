@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {View, Text, ActivityIndicator} from 'react-native';
+
 import {
   ContactBannerWrapper,
   InfoContactWrapper,
@@ -10,6 +10,10 @@ import InfoContact from '../../components/infocontact/InfoContact';
 import AbsoluteButton from '../../components/absolutebutton/AbsoluteButton';
 import {ReducerContext} from '../../context/ReducerProvider';
 import {deleteContact} from '../../apirequests/contacts';
+import {
+  ActivityIndicatorContainer,
+  BaseActivityIndicator,
+} from '../../styles/baseUI';
 
 const SeeContact = props => {
   const [showAbsoluteButtonText, setShowAbsoluteButtonText] = useState(false);
@@ -33,7 +37,9 @@ const SeeContact = props => {
   return (
     <>
       {contactsState?.deleting ? (
-        <ActivityIndicator />
+        <ActivityIndicatorContainer>
+          <BaseActivityIndicator />
+        </ActivityIndicatorContainer>
       ) : (
         <>
           <SeeContactsContainer

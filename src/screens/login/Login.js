@@ -1,8 +1,11 @@
 import React, {useEffect, useContext} from 'react';
-import {ActivityIndicator} from 'react-native';
 
 import {LoginContentContainer, TitleView} from './styles';
-import {BaseText} from '../../styles/baseUI';
+import {
+  ActivityIndicatorContainer,
+  BaseActivityIndicator,
+  BaseText,
+} from '../../styles/baseUI';
 import BaseButton from '../../styles/components/basebutton/BaseButton';
 import {
   getLoggedLocalStorage,
@@ -27,7 +30,9 @@ const LoginContent = props => {
   return (
     <>
       {userState?.loading ? (
-        <ActivityIndicator />
+        <ActivityIndicatorContainer>
+          <BaseActivityIndicator />
+        </ActivityIndicatorContainer>
       ) : (
         <LoginContentContainer>
           <TitleView>

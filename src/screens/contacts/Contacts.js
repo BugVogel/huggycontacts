@@ -1,13 +1,16 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {View, Text, ActivityIndicator} from 'react-native';
+
 import {ContactsContainer} from './styles';
 import List from '../../components/list/List';
-import mockDatas from '../../mock/mockDatas';
 import {orderListJSON} from './utils';
 import AbsoluteButton from '../../components/absolutebutton/AbsoluteButton';
 import {ReducerContext} from '../../context/ReducerProvider';
 import {getContacts} from '../../apirequests/contacts';
 import {useIsFocused} from '@react-navigation/native';
+import {
+  ActivityIndicatorContainer,
+  BaseActivityIndicator,
+} from '../../styles/baseUI';
 
 const Contacts = props => {
   const [showAbsoluteButtonText, setShowAbsoluteButtonText] = useState(false);
@@ -66,7 +69,9 @@ const Contacts = props => {
       {contactsState?.loading ||
       contactsState?.contacts === undefined ||
       userState.searchLoading ? (
-        <ActivityIndicator />
+        <ActivityIndicatorContainer>
+          <BaseActivityIndicator />
+        </ActivityIndicatorContainer>
       ) : (
         <ContactsContainer>
           <List
