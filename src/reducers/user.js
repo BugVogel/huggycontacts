@@ -1,11 +1,13 @@
 export function reducer(state, action) {
   switch (action.type) {
     case 'LOGGED_IN':
-      return {...state, logged: true, loading: false};
+      return {...state, logged: true};
     case 'LOGGED_OUT':
       return {...state, logged: false, loading: false};
     case 'LOADING_LOG':
       return {...state, loading: true};
+    case 'NOT_LOADING_LOG':
+      return {...state, loading: false};
     case 'SEARCHBAR_ENABLED':
       return {...state, searchbarEnabled: true};
     case 'SEARCHBAR_DISABLED':

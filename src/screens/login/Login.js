@@ -24,12 +24,13 @@ const LoginContent = props => {
   useEffect(() => {
     if (userState?.logged) {
       props.navigation.navigate('Contacts');
+      dispatchUser({type: 'NOT_LOADING_LOG'});
     }
   }, [userState?.logged]);
 
   return (
     <>
-      {userState?.loading ? (
+      {userState?.loading || userState?.logged ? (
         <ActivityIndicatorContainer>
           <BaseActivityIndicator />
         </ActivityIndicatorContainer>
