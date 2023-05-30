@@ -1,5 +1,4 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {useIsFocused} from '@react-navigation/native';
 
 import {ContactsContainer} from './styles';
 import List from '../../components/list/List';
@@ -29,7 +28,11 @@ const Contacts = props => {
 
   useEffect(() => {
     if (
-      (contactsState?.refresh && !userState.searchbarEnabled) ||
+      (contactsState?.refresh &&
+        !userState?.searchbarEnabled &&
+        !contactsState?.updateContact &&
+        !contactsState?.deleting &&
+        !contactsState?.saveContact) ||
       isRefreshing
     ) {
       dispatchContacts({type: 'LOADING'});
@@ -38,7 +41,13 @@ const Contacts = props => {
       dispatchUser({type: 'SEARCHBAR_DISABLED'});
       dispatchContacts({type: 'REFRESHED_CONTACTS'});
     }
-  }, [contactsState?.refresh, isRefreshing]);
+  }, [
+    contactsState?.refresh,
+    isRefreshing,
+    contactsState?.updateContact,
+    contactsState?.deleting,
+    contactsState?.saveContact,
+  ]);
 
   useEffect(() => {
     if (contactsState?.contacts !== undefined && !contactsState?.loading) {

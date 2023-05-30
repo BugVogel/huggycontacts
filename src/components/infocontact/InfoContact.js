@@ -33,7 +33,7 @@ const InfoContact = ({contact}) => {
     },
     {
       label: 'Cidade',
-      content: contact?.city ? contact.district : 'Não disponível',
+      content: contact?.city ? contact.city : 'Não disponível',
     },
     {
       label: 'Estado',
