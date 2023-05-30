@@ -21,16 +21,24 @@ const Contacts = props => {
   const {contactsState, dispatchContacts} = reducerContextValues.contacts;
   const {dispatchNotifications} = reducerContextValues.notifications;
   const {userState, dispatchUser} = reducerContextValues.user;
-  const isFocused = useIsFocused();
 
   useEffect(() => {
-    if ((isFocused && !userState.searchbarEnabled) || isRefreshing) {
+    dispatchContacts({type: 'LOADING'});
+    getContacts(dispatchContacts, dispatchNotifications);
+  }, []);
+
+  useEffect(() => {
+    if (
+      (contactsState?.refresh && !userState.searchbarEnabled) ||
+      isRefreshing
+    ) {
       dispatchContacts({type: 'LOADING'});
       getContacts(dispatchContacts, dispatchNotifications);
       setIsRefreshing(false);
       dispatchUser({type: 'SEARCHBAR_DISABLED'});
+      dispatchContacts({type: 'REFRESHED_CONTACTS'});
     }
-  }, [isFocused, isRefreshing]);
+  }, [contactsState?.refresh, isRefreshing]);
 
   useEffect(() => {
     if (contactsState?.contacts !== undefined && !contactsState?.loading) {

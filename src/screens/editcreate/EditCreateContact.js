@@ -41,6 +41,7 @@ const EditCreateContact = props => {
 
       addContact(dispatchContacts, newContact, dispatchNotifications);
       dispatchUser({type: 'SEARCHBAR_DISABLED'});
+      dispatchContacts({type: 'REFRESH_CONTACTS'});
       props.navigation.navigate('Contacts');
     }
   }, [contactsState?.saveContact]);
@@ -62,6 +63,7 @@ const EditCreateContact = props => {
 
       updateContact(dispatchContacts, newContact, dispatchNotifications);
       dispatchUser({type: 'SEARCHBAR_DISABLED'});
+      dispatchContacts({type: 'REFRESH_CONTACTS'});
       props.navigation.navigate('Contacts');
     }
   }, [contactsState?.updateContact]);

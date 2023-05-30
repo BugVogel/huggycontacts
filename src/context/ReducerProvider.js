@@ -19,6 +19,7 @@ const initialContactsState = {
   contacts: [],
   saveContact: false,
   deleting: false,
+  refresh: false,
 };
 
 const initialNotificationsState = {
