@@ -1,11 +1,15 @@
+import {putMaskNumber} from '../../components/formconstructor/utils';
+
 export const putValues = (form, contact) => {
   let newForm = [...form];
   return newForm.map(item => {
+    const verifyPhoneOrMobile = item.name === 'phone' || item.name === 'mobile';
     let newItem = {
       ...item,
-      value: contact[item.name],
-      required:
-        item.name === 'phone' || item.name === 'mobile' || item?.required,
+      value: verifyPhoneOrMobile
+        ? putMaskNumber(contact[item.name])
+        : contact[item.name],
+      required: verifyPhoneOrMobile || item?.required,
     };
 
     return newItem;
@@ -37,6 +41,7 @@ export const formIsValidated = (setFormStateValues, formStateValues) => {
       (input?.value?.length > 20 || input?.value?.length < 11)
     ) {
       //Mobile celphone validation
+      console.log(input.value);
       return {...input, alertEmail: false, alert: false, alertMobile: true};
     }
     return input;

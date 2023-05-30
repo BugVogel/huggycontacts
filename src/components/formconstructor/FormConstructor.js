@@ -3,6 +3,7 @@ import {useTheme} from 'styled-components';
 
 import {BaseInput, BaseText} from '../../styles/baseUI';
 import {AlertTextView, InputView} from './styles';
+import {putMaskNumber} from './utils';
 
 const FormConstructor = ({formState}) => {
   let formValues = [...formState.formStateValues];
@@ -27,7 +28,7 @@ const FormConstructor = ({formState}) => {
       {formValues.map((input, index) => {
         const verifyPhoneOrMobile =
           input.name === 'mobile' || input.name === 'phone';
-
+        const inputValue = formState.formStateValues[index]?.value;
         return (
           <InputView key={index}>
             <BaseInput
@@ -49,22 +50,18 @@ const FormConstructor = ({formState}) => {
                   ? theme.colors.primary
                   : 'gray'
               }
-              value={formState.formStateValues[index]?.value}
+              value={inputValue}
               inputMode={
-                input.name === 'mobile' || input.name === 'phone'
+                verifyPhoneOrMobile
                   ? 'numeric'
-                  : input.name
+                  : input.name === 'email'
                   ? 'email'
                   : 'text'
               }
               onChangeText={text => {
                 let newFormValues = [...formState.formStateValues];
-                const textJustNumber = text.replace(/[^0-9]/g, '');
-                const maskedText =
-                  (text !== '' ? '+' : '') +
-                  textJustNumber.slice(0, 2) +
-                  (text.length >= 2 ? ' ' : '') +
-                  textJustNumber.slice(2, textJustNumber.length);
+
+                const maskedText = putMaskNumber(text);
                 newFormValues[index] = {
                   ...newFormValues[index],
                   value: verifyPhoneOrMobile ? maskedText : text,
