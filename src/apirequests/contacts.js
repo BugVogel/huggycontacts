@@ -32,6 +32,7 @@ export const addContact = async (
       dispatchContacts({type: 'ADD_CONTACT', payload: {...contact}});
     })
     .catch(error => {
+      //Apesar de não cadastrar um usuário o backend não retorna erro quando o usuário tenta cadastrar um email/telefone/celular já cadastrado
       dispatchContacts({type: 'CANCEL_SAVE_CONTACT'});
       dispatchNotifications({
         type: 'SHOW_ALERT',
@@ -55,6 +56,7 @@ export const updateContact = async (
       dispatchContacts({type: 'UPDATED_CONTACT', payload: {...contact}});
     })
     .catch(e => {
+      //Apesar de não atualizar um usuário o backend não retorna erro quando o usuário tenta cadastrar um email/telefone/celular já cadastrado
       dispatchContacts({type: 'CANCEL_UPDATE_CONTACT'});
       dispatchNotifications({
         type: 'SHOW_ALERT',

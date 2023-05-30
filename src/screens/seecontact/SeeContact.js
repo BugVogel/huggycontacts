@@ -32,6 +32,7 @@ const SeeContact = props => {
     if (contactsState?.deleting) {
       deleteContact(dispatchContacts, contact.id, dispatchNotifications);
       dispatchUser({type: 'SEARCHBAR_DISABLED'});
+      dispatchContacts({type: 'REFRESH_CONTACTS'});
       props.navigation.navigate('Contacts');
     }
   }, [contactsState?.deleting]);
