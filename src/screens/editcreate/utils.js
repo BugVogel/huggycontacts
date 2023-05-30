@@ -6,9 +6,10 @@ export const putValues = (form, contact) => {
     const verifyPhoneOrMobile = item.name === 'phone' || item.name === 'mobile';
     let newItem = {
       ...item,
-      value: verifyPhoneOrMobile
-        ? putMaskNumber(contact[item.name])
-        : contact[item.name],
+      value:
+        verifyPhoneOrMobile && contact[item.name]
+          ? putMaskNumber(contact[item.name])
+          : contact[item.name],
       required: verifyPhoneOrMobile || item?.required,
     };
 
@@ -41,7 +42,6 @@ export const formIsValidated = (setFormStateValues, formStateValues) => {
       (input?.value?.length > 20 || input?.value?.length < 11)
     ) {
       //Mobile celphone validation
-      console.log(input.value);
       return {...input, alertEmail: false, alert: false, alertMobile: true};
     }
     return input;
