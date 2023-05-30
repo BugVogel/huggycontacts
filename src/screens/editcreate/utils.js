@@ -34,7 +34,7 @@ export const formIsValidated = (setFormStateValues, formStateValues) => {
       return {...input, alertEmail: true, alert: false, alertMobile: false};
     } else if (
       (input?.name === 'mobile' || input?.name === 'phone') &&
-      (input?.value?.length >= 19 || input?.value?.length <= 9)
+      (input?.value?.length > 20 || input?.value?.length < 11)
     ) {
       //Mobile celphone validation
       return {...input, alertEmail: false, alert: false, alertMobile: true};
