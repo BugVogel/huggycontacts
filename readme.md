@@ -75,6 +75,8 @@ npx react-native run-ios
 
 > This project wasn't tested in IOS system operation because hardware limitations, but also can be installed in this environment
 
+<br />
+
 ### :wrench: Configurations
 
 - Requests
