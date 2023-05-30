@@ -69,10 +69,6 @@ export function reducer(state, action) {
         contacts: newContactsAfterDelete,
         deleting: false,
       };
-    case 'REFRESH_CONTACTS':
-      return {...state, refresh: true};
-    case 'REFRESHED_CONTACTS':
-      return {...state, refresh: false};
 
     default:
       return state;
