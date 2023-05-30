@@ -20,6 +20,7 @@ const SeeContact = props => {
   const reducerContextValues = useContext(ReducerContext);
   const {contactsState, dispatchContacts} = reducerContextValues.contacts;
   const {dispatchNotifications} = reducerContextValues.notifications;
+  const {dispatchUser} = reducerContextValues.user;
   const [currentOffset, setCurrentOffset] = useState(0);
   const contact = props.route.params;
 
@@ -30,6 +31,7 @@ const SeeContact = props => {
   useEffect(() => {
     if (contactsState?.deleting) {
       deleteContact(dispatchContacts, contact.id, dispatchNotifications);
+      dispatchUser({type: 'SEARCHBAR_DISABLED'});
       props.navigation.navigate('Contacts');
     }
   }, [contactsState?.deleting]);

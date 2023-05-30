@@ -12,6 +12,7 @@ const EditCreateContact = props => {
   const reducerContextValues = useContext(ReducerContext);
   const {contactsState, dispatchContacts} = reducerContextValues.contacts;
   const {dispatchNotifications} = reducerContextValues.notifications;
+  const {dispatchUser} = reducerContextValues.user;
   const formState = {formStateValues, setFormStateValues};
   const contact = props.route.params;
   const formJSON = contact
@@ -25,6 +26,7 @@ const EditCreateContact = props => {
 
   useEffect(() => {
     if (contactsState?.saveContact) {
+      //Add contact
       if (!formIsValidated(setFormStateValues, formStateValues)) {
         dispatchContacts({type: 'CANCEL_SAVE_CONTACT'});
         return;
@@ -38,12 +40,14 @@ const EditCreateContact = props => {
       });
 
       addContact(dispatchContacts, newContact, dispatchNotifications);
+      dispatchUser({type: 'SEARCHBAR_DISABLED'});
       props.navigation.navigate('Contacts');
     }
   }, [contactsState?.saveContact]);
 
   useEffect(() => {
     if (contactsState?.updateContact) {
+      //Update contact
       if (!formIsValidated(setFormStateValues, formStateValues)) {
         dispatchContacts({type: 'CANCEL_UPDATE_CONTACT'});
         return;
@@ -57,6 +61,7 @@ const EditCreateContact = props => {
       });
 
       updateContact(dispatchContacts, newContact, dispatchNotifications);
+      dispatchUser({type: 'SEARCHBAR_DISABLED'});
       props.navigation.navigate('Contacts');
     }
   }, [contactsState?.updateContact]);

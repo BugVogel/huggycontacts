@@ -93,7 +93,7 @@ const FormConstructor = ({formState}) => {
             {input?.alertMobile && (
               <AlertTextView>
                 <BaseText color="red" fontSize={12}>
-                  Número de celular inválido
+                  Número inválido
                 </BaseText>
               </AlertTextView>
             )}

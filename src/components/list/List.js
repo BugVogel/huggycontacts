@@ -25,6 +25,7 @@ const List = ({listJSON, setIsGoingUp = () => {}, navigation}) => {
           setCurrentOffset(event.nativeEvent.contentOffset.y);
         }}
         data={listJSON}
+        keyExtractor={item => item.id}
         renderItem={({item, index}) => {
           return (
             <ListItem

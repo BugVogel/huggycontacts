@@ -22,7 +22,7 @@ const Contacts = props => {
   const isFocused = useIsFocused();
 
   useEffect(() => {
-    if (isFocused) {
+    if (isFocused && !userState.searchbarEnabled) {
       dispatchContacts({type: 'LOADING'});
       getContacts(dispatchContacts, dispatchNotifications);
     }
