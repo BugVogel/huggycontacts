@@ -15,7 +15,7 @@
 - [React Native Vector Icons](https://github.com/oblador/react-native-vector-icons) :hammer:
   - This library is used to make acess for available icons and to get icons access in the project through a specific component
 - [Async Storage ](https://react-native-async-storage.github.io/async-storage/docs/install/) :handbag:
-  - With AsyncStorage you can put some data in local cache storage of the device. It's a kind of asynchronous local database, and is used for persist login in this procject
+  - With AsyncStorage you can put some data in local cache storage of the device. It's a kind of asynchronous local database, and is used for persist login in this project
 
 <br />
 
