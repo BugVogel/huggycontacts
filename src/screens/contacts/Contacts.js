@@ -14,6 +14,8 @@ import {
 
 const Contacts = props => {
   const [showAbsoluteButtonText, setShowAbsoluteButtonText] = useState(true);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const refreshState = {isRefreshing, setIsRefreshing};
   const [contactsList, setContactsList] = useState([]);
   const reducerContextValues = useContext(ReducerContext);
   const {contactsState, dispatchContacts} = reducerContextValues.contacts;
@@ -22,11 +24,13 @@ const Contacts = props => {
   const isFocused = useIsFocused();
 
   useEffect(() => {
-    if (isFocused && !userState.searchbarEnabled) {
+    if ((isFocused && !userState.searchbarEnabled) || isRefreshing) {
       dispatchContacts({type: 'LOADING'});
       getContacts(dispatchContacts, dispatchNotifications);
+      setIsRefreshing(false);
+      dispatchUser({type: 'SEARCHBAR_DISABLED'});
     }
-  }, [isFocused]);
+  }, [isFocused, isRefreshing]);
 
   useEffect(() => {
     if (contactsState?.contacts !== undefined && !contactsState?.loading) {
@@ -75,6 +79,7 @@ const Contacts = props => {
       ) : (
         <ContactsContainer>
           <List
+            refreshState={refreshState}
             listJSON={contactsList}
             setIsGoingUp={isGoingUp => setShowAbsoluteButtonText(isGoingUp)}
             navigation={props.navigation}

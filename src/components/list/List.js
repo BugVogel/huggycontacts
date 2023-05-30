@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, RefreshControl} from 'react-native';
 
 import ListItem from './ListItem';
 import EmptyList from '../emptylist/EmptyList';
@@ -8,14 +8,28 @@ import {getFirstIndexs} from './util';
 import {ReducerContext} from '../../context/ReducerProvider';
 import {BaseText} from '../../styles/baseUI';
 
-const List = ({listJSON, setIsGoingUp = () => {}, navigation}) => {
+const List = ({
+  listJSON,
+  setIsGoingUp = () => {},
+  navigation,
+  refreshState,
+}) => {
   const [currentOffset, setCurrentOffset] = useState(0);
+  const {isRefreshing, setIsRefreshing} = refreshState;
   const {userState} = useContext(ReducerContext).user;
   const firstIndexs = getFirstIndexs(listJSON);
 
   return (
     <ListContainer>
       <FlatList
+        refreshControl={
+          <RefreshControl
+            refreshing={isRefreshing}
+            onRefresh={() => {
+              setIsRefreshing(true);
+            }}
+          />
+        }
         onScroll={event => {
           if (event.nativeEvent.contentOffset.y > currentOffset) {
             setIsGoingUp(false);
