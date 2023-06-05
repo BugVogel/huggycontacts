@@ -48,7 +48,7 @@ yarn
 You can link the assets used in this project typing this command:
 
 ```
-npx react-native-assets
+npx react-native-asset
 ```
 
 For IOS only, we recommend make the pod installation:
